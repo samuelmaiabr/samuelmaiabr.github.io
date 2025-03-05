@@ -1,1 +1,592 @@
-Hello World
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Samuel Maia" />
+
+
+<title>Relatório de Ciência dos Dados: Projeto ‘’Complexidade e Desigualdade’’</title>
+
+<script src="maia-report-2025_files/header-attrs-2.27/header-attrs.js"></script>
+<script src="maia-report-2025_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="maia-report-2025_files/bootstrap-3.3.5/css/spacelab.min.css" rel="stylesheet" />
+<script src="maia-report-2025_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="maia-report-2025_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="maia-report-2025_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="maia-report-2025_files/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="maia-report-2025_files/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="maia-report-2025_files/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="maia-report-2025_files/navigation-1.1/tabsets.js"></script>
+<link href="maia-report-2025_files/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="maia-report-2025_files/highlightjs-9.12.0/highlight.js"></script>
+<link href="maia-report-2025_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="maia-report-2025_files/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Relatório de Ciência dos Dados: Projeto
+<em>‘’Complexidade e Desigualdade’’</em></h1>
+<h4 class="author">Samuel Maia</h4>
+<h4 class="date"><strong>Curso:</strong> <em>Ciência dos Dados
+Avançada</em></h4>
+
+</div>
+
+
+<style>
+  h1 {
+    margin-bottom: 30px;
+  }
+  .author {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+<div style="height: 1px;">
+
+</div>
+<div id="visão-geral" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Visão geral</h1>
+<p>Neste relatório, apresento os conceitos e técnicas aprendidos no
+curso <em>Ciência de Dados Avançada</em>, no semestre 2024/2. Essas
+abordagens foram aplicadas ao projeto de pesquisa “Complexidade
+Econômica e Desigualdade de Renda: a vista do topo é diferente” (de
+agora em diante, <em>Projeto</em>), trabalho final da disciplina
+<em>Economia do Desenvolvimento</em> cursada no mesmo semestre.</p>
+Estruturei o relatório em duas partes. Na primeira, intitulada
+<strong><em>Projeto</em></strong> <strong>e Bastidores</strong>, faço
+uma breve apresentação do <em>Projeto</em> e das dificuldades
+aprendizados adquiridos ao longo do processo. A segunda parte – a mais
+importante – é dedicada à <strong>Execução</strong>. Ela segue a
+estrutura do planejamento adotado, dividido nas seguintes seções:
+“Preparação dos Dados”, “Limpeza e Estruturação”, “Análise”,
+“Resultados” e “Transparência”. Termino com a <strong>Conclusão
+</strong>.
+<div style="height: 1px;">
+
+</div>
+<hr />
+</div>
+<div id="projeto-e-bastidores" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> <em>Projeto</em> e
+Bastidores</h1>
+<div style="height: 1px;">
+
+</div>
+<div id="contextualização" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Contextualização</h2>
+<p>Com o <em>Projeto</em>, investiguei a relação entre
+<strong>complexidade econômica</strong> (ECI) e <strong>desigualdade de
+renda</strong>. A análise é feita utilizando dados da <strong>World
+Inequality Database (WID)</strong> e do <strong>Atlas de Complexidade
+Econômica (SITC)</strong>, com o objetivo de replicar e expandir os
+achados de <a
+href="https://doi.org/10.1016/j.worlddev.2016.12.020">Hartmann et
+al. (2017)</a>, que sugerem uma associação negativa entre desigualdade e
+complexidade econômica. No entanto, neste estudo, exploro a
+possibilidade de que o uso de bases de dados mais recentes e medidas
+mais desagregadas de desigualdade (como as participações de renda) possa
+alterar esse resultado.</p>
+<div style="height: 1px;">
+
+</div>
+</div>
+<div id="cozinha-de-pesquisa" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> “Cozinha de
+Pesquisa”</h2>
+Ao longo do processo, enfrentei desafios significativos, como a
+integração de bases de dados grandes e variadas, e o tratamento de dados
+ausentes e discrepantes. No entanto, o trabalho me permitiu aplicar
+diversas técnicas de <strong>limpeza de dados</strong> e <strong>análise
+estatística</strong>, além de melhorar minha compreensão sobre como
+escolher e implementar diferentes tipos de modelos para testar as
+hipóteses da pesquisa.
+<div style="height: 1px;">
+
+</div>
+<hr />
+</div>
+</div>
+<div id="execução" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Execução</h1>
+<p>Estruturei o trabalho com os dados do <em>Projeto</em> em cinco
+etapas:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Preparação</strong>: Entendimento das bases de dados (WID e
+Atlas) e suas variáveis.</li>
+<li><strong>Limpeza e Estruturação</strong>: Como integrei as bases e
+preparei os dados para análise.</li>
+<li><strong>Análises</strong>: Execução das análises estatísticas e
+visualizações, incluindo modelos de regressão e dados em painel.</li>
+<li><strong>Resultados</strong>: Entendimento das bases de dados (WID e
+Atlas) e suas variáveis.</li>
+<li><strong>Transparência e Reprodutibilidade</strong>: Entendimento das
+bases de dados (WID e Atlas) e suas variáveis.</li>
+</ol>
+<p>Vamos a elas.</p>
+<div style="height: 1px;">
+
+</div>
+<div id="preparação-dos-dados" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Preparação dos
+Dados</h2>
+<p>A primeira etapa envolveu explorar as bases de dados para entender
+suas características, variáveis e estruturas. Com o objetivo de garantir
+a compatibilidade entre os dados de diferentes fontes, foram feitas
+inspeções iniciais e verificações de qualidade.</p>
+<pre class="r"><code># Carregamento dos pacotes necessários
+library(tidyverse)
+library(readr)
+
+# Carregamento e inspeção dos dados
+wid_data &lt;- read_csv(&quot;path_to_wid_data.csv&quot;)
+head(wid_data)</code></pre>
+<div style="height: 1px;">
+
+</div>
+</div>
+<div id="limpeza-e-estruturação-dos-dados" class="section level2"
+number="3.2">
+<h2><span class="header-section-number">3.2</span> Limpeza e
+Estruturação dos Dados</h2>
+<p>Aqui, descrevo o processo de limpeza e estruturação dos dados.
+Incluímos a remoção de variáveis irrelevantes, tratamento de dados
+ausentes e outliers, além de ajustes de formato (como datas e moedas)
+para garantir que os dados estivessem prontos para análise.</p>
+<pre class="r"><code># Remover colunas irrelevantes e tratar dados ausentes
+wid_data_cleaned &lt;- wid_data %&gt;%
+  select(-c(column_to_remove)) %&gt;%
+  drop_na()
+
+# Detecção de outliers usando o método do IQR
+iqr &lt;- IQR(wid_data_cleaned$GDP_per_capita)
+upper_bound &lt;- quantile(wid_data_cleaned$GDP_per_capita, 0.75) + 1.5 * iqr
+lower_bound &lt;- quantile(wid_data_cleaned$GDP_per_capita, 0.25) - 1.5 * iqr
+
+wid_data_cleaned &lt;- wid_data_cleaned %&gt;%
+  filter(GDP_per_capita &lt; upper_bound &amp; GDP_per_capita &gt; lower_bound)</code></pre>
+<div style="height: 1px;">
+
+</div>
+</div>
+<div id="análises" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Análises</h2>
+<div style="height: 1px;">
+
+</div>
+<div id="análise-descritiva" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Análise
+Descritiva</h3>
+<p>Antes de aplicar os modelos estatísticos, fiz uma análise descritiva
+das variáveis principais para entender sua distribuição.</p>
+<pre class="r"><code># Cálculo de estatísticas descritivas
+summary_stats &lt;- wid_data_cleaned %&gt;%
+  summarise(mean_eci = mean(ECI, na.rm = TRUE),
+            mean_gini = mean(Gini, na.rm = TRUE),
+            mean_gdp = mean(GDP_per_capita, na.rm = TRUE))
+summary_stats</code></pre>
+<div style="height: 1px;">
+
+</div>
+</div>
+<div id="modelos-de-regressão" class="section level3" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Modelos de
+Regressão</h3>
+<p>A relação entre ECI e desigualdade de renda foi inicialmente
+investigada por meio de um modelo de regressão linear simples.</p>
+<pre class="r"><code># Regressão Linear Simples
+model &lt;- lm(Gini ~ ECI + log(GDP_per_capita), data = wid_data_cleaned)
+summary(model)</code></pre>
+<div style="height: 1px;">
+
+</div>
+</div>
+<div id="modelos-de-dados-em-painel" class="section level3"
+number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Modelos de Dados em
+Painel</h3>
+<p>Dado que os dados são temporais e por países, apliquei modelos de
+dados em painel, utilizando efeitos fixos e efeitos aleatórios.</p>
+<pre class="r"><code># Modelagem com Efeitos Fixos
+library(plm)
+panel_model &lt;- plm(Gini ~ ECI + log(GDP_per_capita), data = wid_data_cleaned, model = &quot;within&quot;)
+summary(panel_model)
+</code></pre>
+<div style="height: 1px;">
+
+</div>
+</div>
+</div>
+<div id="resultados" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Resultados</h2>
+<div style="height: 1px;">
+
+</div>
+<div id="visualização" class="section level3" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Visualização</h3>
+<p>Para facilitar a interpretação dos resultados, utilizei gráficos de
+regressão e gráficos de dispersão para visualizar a relação entre ECI e
+desigualdade de renda.</p>
+<pre class="r"><code># Gráfico de dispersão para ECI vs Gini
+ggplot(wid_data_cleaned, aes(x = ECI, y = Gini)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;) +
+  theme_minimal() +
+  labs(title = &quot;Relação entre ECI e Índice de Gini&quot;)</code></pre>
+<div style="height: 1px;">
+
+</div>
+</div>
+<div id="discussão" class="section level3" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Discussão</h3>
+<p>Os modelos indicam uma relação negativa entre complexidade econômica
+e desigualdade de renda, especialmente nas camadas de menor renda.
+Contudo, o efeito parece diminuir nas camadas de maior renda, o que
+sugere que a complexidade econômica afeta mais as camadas mais
+pobres.</p>
+<div style="height: 1px;">
+
+</div>
+</div>
+</div>
+<div id="transparência-e-reprodutibilidade" class="section level2"
+number="3.5">
+<h2><span class="header-section-number">3.5</span> Transparência e
+Reprodutibilidade</h2>
+The R code used for this analysis is available in the linked repository,
+which includes scripts for <strong>data cleaning</strong>,
+<strong>statistical modeling</strong>, and
+<strong>visualization</strong>. All steps are fully reproducible.
+<div style="height: 1px;">
+
+</div>
+<hr />
+</div>
+</div>
+<div id="conclusão" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Conclusão</h1>
+Este relatório demonstrou como as técnicas de ciência de dados foram
+aplicadas para explorar a relação entre complexidade econômica e
+desigualdade de renda. Os resultados indicam que países com economias
+mais complexas tendem a apresentar níveis mais baixos de desigualdade,
+principalmente entre as camadas de renda mais baixa. Embora o estudo
+tenha limitações, como a utilização de uma unidade de análise agregada,
+ele abre caminho para futuras investigações que poderiam explorar nível
+individual de dados ou outras variáveis explicativas, como complexidade
+tecnológica.
+<div style="height: 1px;">
+
+</div>
+<hr />
+</div>
+<div id="referências" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Referências</h1>
+<ul>
+<li>WID. (2023). <em>World Inequality Database</em>. Retrieved from <a
+href="https://wid.world/data/"
+class="uri">https://wid.world/data/</a></li>
+<li>SITC. (2023). <em>Atlas of Economic Complexity</em>. Retrieved from
+<a href="https://atlas.hks.harvard.edu/"
+class="uri">https://atlas.hks.harvard.edu/</a></li>
+<li>Other relevant academic papers or articles.
+<div>
+
+</div></li>
+</ul>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
