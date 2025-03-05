@@ -1,0 +1,32 @@
+<style>
+  .small-table {
+      font-size: 15px; /* Reduz o tamanho da fonte das tabelas */
+      display: table; /* Faz com que o bloco atue como uma tabela */
+      margin: auto; /* Centraliza a tabela */
+  }
+
+  .small-table table {
+      width: auto !important; /* Ajusta a tabela apenas ao tamanho do conteúdo */
+      max-width: 100%; /* Impede que ultrapasse a tela */
+      margin: auto; /* Centraliza a tabela */
+      border-collapse: collapse; /* Mantém a tabela organizada */
+  }
+
+  .small-table th, .small-table td {
+      font-size: 15px; /* Aplica o tamanho da fonte dentro das células */
+      word-wrap: break-word; /* Força a quebra de palavras longas */
+      white-space: normal !important; /* Permite múltiplas linhas */
+      overflow-wrap: break-word; /* Melhor compatibilidade */
+      padding: 5px;
+      text-align: center; /* Mantém alinhamento do texto */
+  }
+
+  .table-caption {
+      text-align: center; /* Centraliza a legenda */
+      font-style: italic; /* Mantém o estilo itálico */
+      display: block; /* Faz com que a legenda ocupe uma linha separada */
+      margin: auto; /* Centraliza */
+      width: fit-content; /* Faz com que o tamanho do bloco se ajuste ao conteúdo */
+      padding-top: 5px; /* Dá um pequeno espaço entre a tabela e a legenda */
+  }
+</style>
