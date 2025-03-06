@@ -22,16 +22,16 @@ table_db_md <- "
 | SWIID      | Universidade das Nações Unidas                        | Global                 | 1960-hoje     | surveys                                     | Gini                                      |
 | WID        | Paris School of Economics                            | Global e regiões       | 1820-hoje     | surveys; dados fiscais; contas nacionais   | percentis                                  |
 
-*Nota:*AEAT é a \"Agencia Estatal de Administración Tributaria\" da Espanha; ALG (ALL) é \"All the Ginis\" (antigo \"Gini ALL\") do Stone Center on Social-Economic Inequality; CASEN é a \"Encuesta de Caracterización Socioeconómica Nacional\" do Chile; EHII é \"Estimated Household Income Inequality Project\" da Universidade do Texas; HDI é \"Human Development Indicators\" do Banco Mundial; LIS é \"Luxembourg Income Study\" do LIS Cross-National Data Center; OCDE DNA é o \"Projeto de Contas Nacionais Distribucionais\" da Organização para a Cooperação e Desenvolvimento Econômico; RAIS é a \"Relação Anual de Informações Sociais\" do Brasil; SWIID é \"Standardized World Income Inequality Database\" da Universidade das Nações Unidas; WID é \"World Inequality Database\" da Paris School of Economics.
+*Nota: *AEAT é a \"Agencia Estatal de Administración Tributaria\" da Espanha; ALG (ALL) é \"All the Ginis\" (antigo \"Gini ALL\") do Stone Center on Social-Economic Inequality; CASEN é a \"Encuesta de Caracterización Socioeconómica Nacional\" do Chile; EHII é \"Estimated Household Income Inequality Project\" da Universidade do Texas; HDI é \"Human Development Indicators\" do Banco Mundial; LIS é \"Luxembourg Income Study\" do LIS Cross-National Data Center; OCDE DNA é o \"Projeto de Contas Nacionais Distribucionais\" da Organização para a Cooperação e Desenvolvimento Econômico; RAIS é a \"Relação Anual de Informações Sociais\" do Brasil; SWIID é \"Standardized World Income Inequality Database\" da Universidade das Nações Unidas; WID é \"World Inequality Database\" da Paris School of Economics.
 "
 
 # 2. Save the Markdown Table
-writeLines(table_md, "table_db_md")
+writeLines(table_db_md, "table_db_md")
 
 # 3. Convert Markdown Table to an Image
-rmarkdown::render("table_db_md", output_format = "html_document", output_file = "table.html")
-webshot2::webshot("table.html", "table_db_md.png", zoom = 2)  # Large version
-webshot2::webshot("table.html", "table_thumbnail.png", zoom = 0.5)  # Thumbnail
+rmarkdown::render("table_db_md", output_format = "html_document", output_file = "table_db_md.html")
+webshot2::webshot("table_db_md.html", "table_db_md.png", zoom = 2)  # Large version
+webshot2::webshot("table_db_md.html", "table_db_md_table_thumbnail.png", zoom = 0.5)  # Thumbnail
 
 # Confirmation
 cat("✅ Table saved as image. Use the popup link in your report!")

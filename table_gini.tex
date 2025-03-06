@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage[left=3cm,right=2cm,top=1cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel} % Português do Brasil
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{epigraph}
+\usepackage{caption} 
+\usepackage{float}   
+\usepackage{tikz}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+
+
+\usepackage{subcaption} % Certifique-se de incluir este pacote
+
+\usepackage{siunitx}
+\sisetup{round-mode=places,round-precision=4,scientific-notation=true}
+
+\usepackage{caption}
+\captionsetup{font=footnotesize} % Aplica a todas as legendas (tabelas e figuras)
+
+\usepackage{setspace}
+\onehalfspacing
+
+\setlength{\parindent}{2.5em} % Aumenta para 2 vezes o tamanho do espaço 'm' da fonte
+
+
+\usetikzlibrary{shapes,arrows,positioning,calc}
+
+\usepackage[backend=biber,style=apa,url=false,doi=false]{biblatex}
+\addbibresource{table_gini.bib}
+
+
+
+\begin{document}
+
+% Tabela
+\begin{table}[ht]
+    \centering
+    \footnotesize
+    \makebox[\textwidth]{
+        \begin{tabular}{|p{5cm}|p{2.25cm}|p{6.25cm}|} % Definição de largura para cada coluna
+            \hline
+            \textbf{artigos} & \textbf{medidas de desigualdade} & \textbf{bases de dados} \\ \hline\hline
+            \cite{Hartmann2017} & Gini & EHII-UTIP; Gini ALG (antigo Gini ALL)  \\ \hline\hline
+            \cite{Amarante2024} & Gini; shares do 0-5\% e 95-100\% & SWIID; EHII-UTIP \\ \hline
+            \cite{Asamoah2021} & Gini & SWIID \\ \hline
+            \cite{barza2020knowledge} & diferenças salariais & RAIS-IBGE \\ \hline
+            \cite{Sa&acirc2019} & Gender Parity Index & HDI \\ \hline
+            \cite{Chu2020} & Gini & SWIID \\ \hline
+            \cite{correa2016pobreza} & Gini & CASEN-Chile \\ \hline
+            \cite{Sbardella2017} & Gini & UTIP-UNIDO \\ \hline
+            \cite{Marco2022} & Gini & AEAT \\ \hline
+            \cite{BandeiraMorais2021} & Gini; Theil & Ipea Data-Ipea \\ \hline
+            \cite{Paglialunga2022} & Gini & LIS; SWIID \\ \hline
+            \cite{Stojkoski2023} & Gini & UTIP \\ \hline
+            \cite{Zhu2020} & Gini & China Statistical Yearbook \\ \hline
+        \end{tabular}
+    }
+    \footnotesize
+    \caption{Literatura sobre complexidade econômica e desigualdade. Dominam análises a partir do índice de Gini e dados de pesquisas domiciliares. Para o significado das siglas, ver Tabela 2.}
+    \label{fig:reviewcomplexidade_desigualdade}
+\end{table}
+
+\printbibliography
+
+\end{document}
+
+

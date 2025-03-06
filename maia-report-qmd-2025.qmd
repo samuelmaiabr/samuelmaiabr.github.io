@@ -36,22 +36,29 @@ params:
 
 # Visão geral
 
-Neste relatório, apresento os conceitos e técnicas aprendidos no curso *Ciência de Dados Avançada*, no semestre 2024/2. Essas abordagens foram aplicadas ao projeto de pesquisa "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (de agora em diante, *Projeto*), trabalho final da disciplina *Economia do Desenvolvimento* cursada no mesmo semestre.
+Neste relatório, apresento como apliquei conceitos e técnicas aprendidas no curso *Ciência de Dados Avançada*, semestre 2024/2, em um projeto de pesquisa. Especificamente, os apliquei para gerar o artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (de agora em diante, *Projeto*), trabalho final da disciplina *Economia do Desenvolvimento*, cursada no mesmo semestre. O artigo pode ser acessado clicando [aqui](https://drive.google.com/file/d/1xuicRVD2I5QZdf2HObj_-TefAYSYd28O/view?usp=sharing){target="_blank"}.
 
-Estruturei o relatório da seguinte forma. Na @sec-projeto, ***Projeto*** **e Bastidores**, faço uma breve apresentação do *Projeto* e das dificuldades aprendizados adquiridos ao longo do processo. Em seguida, a @sec-execucao -- a mais importante -- é dedicada à **Execução**. Ela segue a estrutura do planejamento adotado, dividido nas seguintes seções: "Preparação dos Dados", "Limpeza e Estruturação", "Análise" e "Resultados". No [Apêndice](#sec-appendix) encontram-se informações necessárias para garantir a repetibilidade das análises, incluindo detalhes do ambiente computacional e dos pacotes utilizados.
+
+Estruturei o relatório da seguinte forma. Na @sec-projeto, ***Projeto***, apresento o tema do artigo para dar contexto à análise dos dados. Em seguida, a @sec-execucao é dedicada à sua **Execução**. Ela segue a estrutura do planejamento que adotei para executar o *Projeto*, pois se divide nas seguintes seções: "Exploração dos Dados", sua "Limpeza e Estruturação", "Análise" e "Resultados". Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina no [Apêndice](#sec-appendix), com informações necessárias para garantir a repetibilidade da análise, em especial detalhes do ambiente computacional e dos pacotes utilizados.
 
 ::: {style="height: 1px;"}
 :::
 
 ------------------------------------------------------------------------
 
-# *Projeto* e Bastidores {#sec-projeto}
+# Um *Projeto* sobre complexidade e desigualdade {#sec-projeto}
 
-## Contextualização
+A **complexidade econômica** de um sistema é determinada por dois fatores principais: *diversidade* e *ubiquidade* de seus produtos [@Hidalgo2007; @atlasEconomicComplexity]. A diversidade representa a variedade de produtos que um país fabrica com vantagem comparativa, enquanto a ubiquidade mede quantos outros países também exportam esses produtos. Os dois fatores estão associados a um maior PIB per capita e ao crescimento econômico, especialmente em países que evoluíram de economias baseadas em recursos naturais para setores mais sofisticados. Para quantificá-los, César Hidalgo e Ricardo Hausmann desenvolveram o **Índice de Complexidade Econômica (ECI)** [@Hidalgo2009].
 
-@hartmann2017 encontraram uma associação negativa entre *desigualdade de renda* e *complexidade econômica*, medida pelo **Economic Complexity Index (ECI)** do ***Atlas de Complexidade Econômica (Atlas)***. Desde então, diversos estudos testaram essa relação em diferentes contextos, especialmente em análises regionais. No entanto, a desigualdade é frequentemente tratada de forma agregada, via Gini, ignorando sua distribuição entre diferentes estratos. Hartmann et al. usaram bases de dados da *All the Ginis (ALG)* e *Estimated Household Income Inequality Project (EHII)*, baseadas em pesquisas domiciliares que subestimam a renda no topo e são menos sensíveis às caudas da distribuição, e apenas usaram o Gini. 
+@Hartmann2017 encontraram uma associação negativa entre *desigualdade de renda* e o ECI, calculado segundo o ***SITC, Rev. 2 do Atlas of Economic Complexity (Atlas)*** [@GrowthLab2019]. Países de economia menos complexa tendem a ser mais desiguais e quanto maior o grau de complexidade de um país, menor sua desigualdade. Desde então, diversos estudos testaram essa relação em diferentes contextos, especialmente regionais. 
 
-Novas metodologias integram registros tributários e administrativos a surveys, além de métricas como parcelas apropriadas, como renda total apropriada por parcelas da distribuição (e.g., 10%, 1%, 0.1% mais ricos). Os resultados indicam que não apenas o nível, mas também as dinâmicas da desigualdade têm mudado [ver @DeRosa2024]. Meu objetivo com o *Projeto* foi replicar a análise de Hartmann et al. utilizando dados da ***World Inequality Database (WID)***, que seguem a abordagem das contas nacionais distributivas (DINA). Isso permitiu examinar a desigualdade de forma mais granular e capturar nuances que o Gini não evidencia, como o efeito progressivo da complexidade nos 90% inferiores da distribuição e sua regressividade no topo.
+No entanto, a desigualdade é frequentemente representada pelo índice de Gini, que não permite conhecermos qual a parcela da renda apropriada tanto pelas faixas mais pobres quanto pelas mais ricas da distribuição. Além disso, a principal fonte de dados são pesquisas domiciliares, que subestimam sistematicamente a concentração de renda no topo [@Alvaredo2023]. Esse é o caso de Hartmann et al., que utilizaram os Ginis calculados pelo ***All the Ginis (ALG)*** e o ***Estimated Household Income Inequality Project (EHII)***, ambas as bases construídas principalmente a partir de surveys. Para conferir a literatura sobre o tema, as medidas de desigualdade e as principais fontes dos dados empregadas, veja a *Tabela 1* clicando <a href="table_gini.png" target="_blank">aqui</a>.
+
+Para superar esses problemas, pesquisadores têm calculado a desigualdade segundo a metodologia das **Contas Nacionais Distributivas** (da sigla em inglês, **DINA**). As DINAs combinam dados de surveys com registros tributários e administrativos e procuram tornar os resultados compatíveis com as estimativas agregadas das contas nacionais [@piketty2018distributional]. Além de diminuir as dificuldades associadas a alcançar a concentração de renda no topo, isso permite calcular parcelas da renda total apropriadas por diferentes faixas da distribuição (e.g., 50% mais pobres, 10%, 1% e 0,1% mais ricos). No geral, os resultados indicam que não apenas o nível foi subestimado, mas mesmo algumas das dinâmicas da desigualdade podem ser diferentes do que resultados anteriores indicavam [este é o caso da América Latina segundo @DeRosa2024]. 
+
+Meu objetivo com o *Projeto* foi replicar a análise de Hartmann et al. utilizando dados da ***World Inequality Database (WID)***, construídas segundo a abordagem da DINA pelo ***World Inequality Lab***. Isso permitiu examinar a relação da complexidade com a desigualdade de forma mais granular. Se no nível agregado os achados reforçaram a relação negativa entre complexidade e desigualdade, também encontrei novos fatos estilizados. Primeiro, o efeito progressivo que acompanha a complexidade se concentra nos 90% inferiores da distribuição. Isso é particularmente forte entre os 50% mais pobres, cuja renda é a que mais cresce conforme a complexidade aumenta. A relação se torna negativa apenas dentro dos 10% mais ricos, mas aqui ela se torna regressiva. Quanto mais nos aproximamos do topo, menor é o efeito de redução da renda associado à mais complexidade. A partir do 1% mais ricos, isso praticamente desaparece. Ou seja, quando vista do topo, a relação entre estrutura produtiva e desigualdade não é homogênea.
+
+Dito isso, agora podemos falar dos conceitos e técnicas de ciência dos dados aplicadas no *Projeto* propriamente.
 
 ::: {style="height: 1px;"}
 :::
@@ -60,43 +67,26 @@ Novas metodologias integram registros tributários e administrativos a surveys, 
 
 # Execução {#sec-execucao}
 
-Estruturei o trabalho com os dados do *Projeto* em cinco etapas:
+Estruturei a realização do *Projeto* em cinco etapas:
 
-1)  **Preparação**: Exploração das bases de dados (WID e Atlas) e compreensão de suas variáveis.
+1)  **Exploração**: Exploração das bases de dados (WID e SITC, Rev. 2) e compreensão de suas variáveis.
 2)  **Limpeza e Estruturação**: Integração das bases e tratamento dos dados para análise.
 3)  **Análises**: Execução de estatísticas descritivas, modelos de regressão e dados em painel.
 4)  **Resultados**: Interpretação dos achados e comparação com a literatura existente.
 5)  **Repetibilidade e Transparência**: Documentação do processo e organização do código.
 
-Todas as etapas foram conduzidas com *R Statistical Software* [@Rlanguage]. Os detalhes para a repetibilidade dos resultados podem ser encontrados no [Apêndice](#sec-appendix).
+Todas as etapas foram conduzidas com *R Statistical Software* [@Rlanguage]. As quatro primeiras etapas são objeto, respectivamente, das subseções a seguir. Os detalhes sobre a repetibilidade e transparência dos resultados podem ser encontrados no [Apêndice](#sec-appendix).
 
 ::: {style="height: 1px;"}
 :::
 
-## Preparação dos Dados
+## Exploração dos Dados
 
-A primeira etapa envolveu explorar as bases de dados para entender suas características, variáveis e estruturas. Com o objetivo de garantir a compatibilidade entre os dados de diferentes fontes, foram feitas inspeções iniciais e verificações de qualidade.
+Aqui o principal objetivo foi construir uma base de dados que reunisse os dados sobre complexidade do Atlas e aqueles de desigualdade da WID e permitisse conduzir as análises relevantes. Para isso explorei ambas as bases para entender suas características, variáveis e estruturas. Falemos sobre cada uma:
 
-Para estudar a relação entre Complexidade Econômica e Desigualdade de Renda, utilizei duas grandes fontes de dados:
-    
-- **World Inequality Database (WID)**: Reúne estatísticas de desigualdade de renda e riqueza para mais de 200 países e regiões, cobrindo diferentes períodos. Aplicando a metodologia das Contas Nacionais Distributivas [@blanchet2024distributional],  a WID fornece dados para todos os percentis da distribuição, permitindo o cálculo de métricas como Gini, razão de Palma e parcela apropriada por fatias da distribuição (e.g., os 10%, 1% e 0,1% mais ricos). Além disso, inclui variáveis associadas a diferentes conceitos de renda  (por exemplo, *pretax income*, *post-tax income*, *factor income*). Para uma comparação entre a WID e outras bases de desigualdade, como ALG e EHII, utilizadas por @hartmann2017, comparadas com a WID, clique <a href="table_db_md.png" target="_blank">aqui</a>.
+**World Inequality Database (WID)**: A base completa pode ser baixada clicando neste [link](https://wid.world/data/). A WID consiste em centenas de `.csv`, sendo pelo menos dois por país — um com os dados e outro com os metadados. Além disso, há arquivos que agregam informações de regiões inteiras, como a América Latina e o Caribe. Em alguns casos, como China e Estados Unidos, há também arquivos específicos para subdivisões intranacionais. Há estatísticas sobre desigualdade de renda, riqueza, população e agregados macroeconômicos para mais de 200 países e regiões, cobrindo diferentes períodos. 
 
-- **Atlas of Economic Complexity (SITC, Rev. 2)**: A segunda base corresponde a dados de comércio exterior e complexidade econômica no formato SITC, revision 2. Ela fornece a *Economic Complexity Index (ECI)*, *Product Complexity Index (PCI)* e valores de importação/exportação por produto e por país. Cada arquivo da SITC, normalmente, vem segmentado por produto ou por bloco de anos. É necessário agrupar esses dados para obter, por exemplo, o valor total de exportações de cada país em cada ano e, a partir daí, calcular ou recuperar o valor médio de ECI para aquele país-ano.
-
-::: {style="height: 1px;"}
-:::
-
-## Limpeza e Estruturação dos Dados
-
-Todo o processo de limpeza e integração dos dados encontra-se documentado nos scripts `wid-SITC-cleaning.R`. Entre todas as fases do projeto, a limpeza e estruturação dos dados foi a mais trabalhosa, sobretudo pela escala dos dados da WID, que somam mais de 50 milhões de observações. Resumidamente, segui os seguinets passos:
-    
-1. **Carregamento e Combinação da WID**  
-- A WID estava segmentada em centenas de arquivos CSV, cada um abrangendo subconjuntos de países, anos e variáveis.  
-- Utilizei processamento paralelo (`future_map_dfr()` em R) para ler todos os arquivos e concatená-los em um único *data frame* (`wid_full`).
-- A seguir, selecionei apenas as variáveis de interesse (Gini, Palma, *share* do topo, GDP, população, etc.). Isso reduziu bastante o tamanho e a complexidade do *dataset* final.
-
-- A Tabela 1 apresenta a estrutura dos códigos da WID e a Tabela 2 as variáveis  utilizados no Projeto -- incluindo Gini, razão de Palma, fração de renda do topo (shares) e seus respectivos percentis. Observa-se que ‘equal-split’ implica uma distribuição homogênea da renda dentro dos domicílios, o que amplia o número de observações disponíveis. Também selecionei as variáveis de **GDP per capita** e *população*, também disponibilizadas na WID, para criar métricas comparáveis entre países e ao longo do tempo.
-
+A base é construída segundo a metodologia da DINA e fornece dados para todos os percentis da distribuição [@blanchet2024distributional]. Além disso, inclui variáveis associadas a diferentes conceitos de renda  (por exemplo, *pretax income*, *post-tax income*, *factor income*). A *Tabela 2* abaixo apresenta a estrutura dos códigos da WID. O dicionário de códigos pode ser acessado [aqui](https://wid.world/codes-dictionary/). Para uma comparação entre a WID e outras bases de desigualdade, como as utilizadas por @Hartmann2017, acesse a *Tabela 3* clicando <a href="table_db_md.png" target="_blank">aqui</a>.
 
 <div class="small-table">
 
@@ -112,9 +102,48 @@ Todo o processo de limpeza e integração dos dados encontra-se documentado nos 
 | idade              | `992`       | acima de 20 anos               |
 | percentil de renda | `p99p100`   | 1% no topo                     |
 
-: Tabela 1: Estrutura dos Códigos da WID
+: Tabela 3: Estrutura dos Códigos da WID
 
 </div>
+
+&nbsp;
+
+**SITC, Rev. 2 do Atlas of Economic Complexity**: O Atlas oferece bases sobre comércio internacional, crescimento econômico, e produtos e serviços classificados segundo a noção de complexidade econômica [@atlasEconomicComplexity]. Uma apresentação curta sobre ele se encontra [aqui](https://atlas.hks.harvard.edu/about-data#data). Ele contém dados históricos de comércio bilateral para aproximadamente 700 produtos agrupados em 10 setores, cobrindo mais de 250 países e territórios desde 1962. A fonte do Atlas são dados da *United Nations Statistical Division (Comtrade)* e da *IMF Direction of Trade Statistics*.  Os dados são estruturados em dois formatos:
+
+O Atlas disponibiliza os dados estruturados segundo dois sistemas de classificação: *Harmonized System (HS, 1992)* e a *Standard International Trade Classification (SITC, Rev. 2)*. Na SITC, Rev. 2 [@SITC-2], os produtos são classificados em níveis de 1-, 2- ou 4-dígitos, mantendo consistência metodológica desde os anos 1960 – mesmo com o surgimento de novos produtos (ex: eletrônicos). Já a a base HS, 1992 é usada para análises mais recentes. Ela inclui por volta de 5000 produtos (detalhados em 1-, 2-, 4- ou 6-dígitos), mas cobre um período mais curto, a partir de 1995. A *Tabela 4* abaixo apresenta a estrutura dos códigos da SITC, Rev. 2. Em sua análise original, Hartmann et al. optaram pela SITC, Rev. 2, pois ela permite estudos de longo prazo, ainda que com menor granularidade. Pela mesma razão, é ela que empreguei aqui.
+
+<div class="small-table">
+
+| **categoria**       | **código**          | **significado**                                          |
+|---------------------|--------------------|----------------------------------------------------------|
+| país               | `country_id`        | código do país (M49 - ONU)                              |
+| país parceiro      | `partner_country_id`| código do país parceiro (M49 - ONU)                     |
+| produto            | `product_id`        | identificador numérico do produto (Growth Lab)         |
+| ano                | `year`              | ano do registro                                         |
+| valor de exportação | `export_value`      | valor exportado em dólares correntes                   |
+| valor de importação | `import_value`      | valor importado em dólares correntes                   |
+| complexidade       | `eci`               | Índice de Complexidade Econômica (ECI-SITC)                |
+| complexidade       | `coi`               | Complexity Outlook Index (COI-SITC)                        |
+| complexidade       | `pci`               | Índice de Complexidade do Produto (PCI)                      |
+
+: Tabela 4: Estrutura dos Códigos da SITC, Rev. 2 [@SITC-2]
+
+</div>
+
+
+::: {style="height: 1px;"}
+:::
+
+## Limpeza e Estruturação dos Dados
+
+O processo de limpeza e integração dos dados da WID e da SITC, Rev. 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R)). Entre todas as fases do projeto, foi essa a mais trabalhosa. Resumidamente, segui os seguinets passos:
+    
+1. **Carregamento e Combinação da WID**  
+
+- Utilizei processamento paralelo (`future_map_dfr()` em R) para ler todos os arquivos e concatená-los em um único *data frame* (`wid_full`).
+- A seguir, selecionei apenas as variáveis de interesse (Gini, Palma, *share* do topo, GDP, população, etc.). Isso reduziu bastante o tamanho e a complexidade do *dataset* final.
+
+- A *Tabela 4* apresenta as variáveis  utilizados no Projeto -- incluindo Gini, razão de Palma, fração de renda do topo (shares) e seus respectivos percentis. Observa-se que ‘equal-split’ implica uma distribuição homogênea da renda dentro dos domicílios, o que amplia o número de observações disponíveis. Também selecionei as variáveis de **GDP per capita** e *população*, também disponibilizadas na WID, para criar métricas comparáveis entre países e ao longo do tempo.
 
 &nbsp;
 
@@ -128,7 +157,7 @@ Todo o processo de limpeza e integração dos dados encontra-se documentado nos 
 | `gdiincj992`  | Gini      | pós-tributação   | `p0100` |
 | `rptincj992`  | Palma     | pré-tributação   | `p0p40`, `p90p100` |
 
-: Tabela 2:  Variáveis da WID selecionadas</span>
+: Tabela 4:  Variáveis da WID selecionadas</span>
 
 </div>
 
@@ -139,8 +168,10 @@ Todo o processo de limpeza e integração dos dados encontra-se documentado nos 
 
 2. **Carregamento e Agregação do SITC (Atlas)**  
 
-- Na SITC (Atlas) fiz uso das seguintes variáveis. **ECI** (`avg_eci`): indicador de complexidade econômica médio do país,
-- **Exportações e Importações** (para filtrar países que tivessem volume significativo de comércio exterior),
+Na SITC (Atlas) fiz uso das seguintes variáveis:
+
+- **ECI** (`avg_eci`): indicador de complexidade econômica médio do país.
+- **Exportações e Importações** (para filtrar países que tivessem volume significativo de comércio exterior)
 - **Demais índices** (PCI, COI), embora o foco principal seja o ECI.
 - Os dados do Atlas de Complexidade Econômica (SITC) vinham em diversos arquivos `.dta` (Stata) com granularidade produto-ano-país.  
 - Para cada arquivo, extraí apenas as colunas de interesse: `country_id`, `year`, `export_value`, `import_value` e `eci`, entre outras. Em seguida, agreguei por país-ano, somando as exportações totais e calculando a média do ECI daquele país no ano.  
@@ -235,6 +266,9 @@ head(wid_summary)
 ```
 
 - **Visualização e Ferramentas Estatísticas:** Análises com `lm()` e outras técnicas estatísticas, acompanhadas de gráficos gerados via `ggplot2`.
+
+[INCLUIR OS PRIMEIROS PLOTS]
+
 - Relaciona-se à parte de **Visualização e Análise Avançada** e às **Ferramentas Estatísticas** (e.g., regressão linear), usando a sintaxe do `tidyverse` para apresentações claras e reprodutíveis.
 
 
@@ -296,8 +330,6 @@ summary(panel_model)
 ::: {style="height: 1px;"}
 :::
 
-### Visualização
-
 Para facilitar a interpretação dos resultados, utilizei gráficos de regressão e gráficos de dispersão para visualizar a relação entre ECI e desigualdade de renda.
 
 ``` r
@@ -312,7 +344,7 @@ ggplot(wid_data_cleaned, aes(x = ECI, y = Gini)) +
 ::: {style="height: 1px;"}
 :::
 
-### Cozinha de Pesquisa": limitações e aprendizado
+# "Cozinha de Pesquisa": limitações e aprendizado {#sec-cozinha}
 
 Ao longo do *Projeto*, o principal desafio foi limpar e integrar as bases da WID e do Atlas.  
 
@@ -341,9 +373,9 @@ Outra lição foi sobre **processamento paralelo e repetibilidade**. Para garant
 
 Agradeço a Mateus Leite pela valiosa ajuda na criação dos códigos em R. Mas claro, tanto a falta de elegância quanto eventuais falhas em seu funcionamento ficam por minha conta.
 
-# *Apêndice:* Repetibilidade e Transparência {.unnumbered .appendix #sec-appendix}
+# *Apêndice:* Repetibilidade e Transparência {.unnumbered #sec-appendix}
 
-Para garantir a **repetibilidade**[^repetibilidade]. ou seja, a possibilidade de se obterem os mesmos resultados quando se utilizam exatamente os mesmos dados, código e condições de análise.
+Para garantir a **repetibilidade**[^repetibilidade], ou seja, a possibilidade de se obterem os mesmos resultados quando se utilizam exatamente os mesmos dados, código e condições de análise.
 
 Disponibilizo dois arquivos-chave em **R**: 
 
