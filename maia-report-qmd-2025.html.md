@@ -41,7 +41,9 @@ params:
 
 Neste relatório, apresento como apliquei conceitos e técnicas aprendidas no curso *Ciência de Dados Avançada*, semestre 2024/2, em um projeto de pesquisa. Especificamente, os apliquei para gerar o artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (de agora em diante, *Projeto*), trabalho final da disciplina *Economia do Desenvolvimento*, cursada no mesmo semestre. O artigo pode ser acessado clicando [aqui](https://drive.google.com/file/d/1xuicRVD2I5QZdf2HObj_-TefAYSYd28O/view?usp=sharing){target="_blank"}.
 
-Estruturei este relatório da seguinte forma. Na @sec-projeto, ***Projeto***, apresento o tema do artigo, cuja realização envolveu duas etapas: a primeira, de exploração, limpeza e estruturação dos dados; a segunda, dedicada à análise e aos resultados. Neste relatório me concentro exclusivamente na primeira etapa, que é o objeto da @sec-execucao, **Execução**. Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina na @sec-appendix, com informações sobre a **Repetibilidade** do trabalho.
+Executei o ***Projeto*** em duas etapas: a primeira, de exploração, limpeza e estruturação dos dados; a segunda, dedicada à análise e aos resultados. Neste relatório trato apenas da primeira, pois incluir também a fase de análise e resultados o tornaria excessivamente extenso. 
+
+Organizei o relatório da seguinte forma. Na @sec-projeto apresento o tema do artigo, cuja realização envolveu Neste relatório me concentro exclusivamente na primeira etapa, que é o objeto da @sec-execucao, **Execução**. Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina na @sec-appendix, com informações sobre a **Repetibilidade** do trabalho.
 
 ::: {style="height: 1px;"}
 :::
@@ -331,7 +333,7 @@ Outra lição foi sobre **processamento paralelo e repetibilidade**. Para garant
 
 # Repetibilidade {#sec-appendix}
 
-Seguindo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir **repetibilidade** de **reprodutibilidade**. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de *reprodutibilidade computacional*. Já a segunda, também chamada de *replicabilidade*, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente. 
+Segundo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir **repetibilidade** de **reprodutibilidade**. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de *reprodutibilidade computacional*. Já a segunda, também chamada de *replicabilidade*, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente. 
 
 Para garantir a **repetibilidade** da exploração, limpeza e estruturação dos dados, acesse o **Apêndice** clicando [aqui](repetibilidade.html). Nele você poderá baixar o script `wid-SITC-cleaning.R` além de encontrar informações sobre o ambiente computacional e os pacotes utilizados.
 
