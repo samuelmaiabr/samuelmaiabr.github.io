@@ -1,11 +1,12 @@
 ---
-title: "Anexo: 'Complexidade Econômica e Desigualdade de Renda:'"
+title: "Apêndice: 'Complexidade Econômica e Desigualdade de Renda:'"
 author: Samuel Maia, Cedeplar, UFMG
 format: 
   html:
     toc: true
     toc-depth: 2
     toc-title: "Repetibilidade"
+    theme: cosmo
 css: styles_replication.css
 ---
 
@@ -14,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 library(htmltools)
 ```
 
-Neste documento, você encontrará um registro completo do ambiente computacional utilizado na execução do script `wid-SITC-cleaning.R` (disponível para baixar [aqui](wid-SITC-cleaning.R). Esse script foi empregado na exploração, limpeza e estruturação dos dados do artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (***Projeto***). Para acessar o relatório principal, do qual este documento é um complemento, clique [aqui](https://samuelmaiabr.github.io/).
+Neste documento, você encontrará um registro completo do ambiente computacional utilizado na execução do script `wid-SITC-cleaning.R` (disponível para baixar [aqui](wid-SITC-cleaning.R)). Esse script foi empregado na exploração, limpeza e estruturação dos dados do artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (***Projeto***). Para acessar o relatório principal, do qual este documento é um complemento, clique [aqui](https://samuelmaiabr.github.io/).
  
 Aqui, o objetivo principal é permitir que seja possível:
 

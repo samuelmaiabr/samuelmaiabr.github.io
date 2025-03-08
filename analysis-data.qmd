@@ -1,0 +1,65 @@
+## Análises
+
+::: {style="height: 1px;"}
+:::
+    
+    A análise realizada para o ***Projeto*** está documentado no script `analysis-proper.R` (baixe [aqui](https://github.com/samuelmaiabr/samuelmaiabr.github.io/blob/main/analysis-proper.R)).
+
+### Análise Descritiva
+
+Antes de aplicar os modelos estatísticos, fiz uma análise descritiva das variáveis principais para entender sua distribuição.
+
+``` r
+# Cálculo de estatísticas descritivas
+summary_stats <- wid_data_cleaned %>%
+    summarise(mean_eci = mean(ECI, na.rm = TRUE),
+        mean_gini = mean(Gini, na.rm = TRUE),
+        mean_gdp = mean(GDP_per_capita, na.rm = TRUE))
+summary_stats
+```
+
+::: {style="height: 1px;"}
+:::
+    
+    ### Modelos de Regressão
+    
+    A relação entre ECI e desigualdade de renda foi inicialmente investigada por meio de um modelo de regressão linear simples.
+
+``` r
+# Regressão Linear Simples
+model <- lm(Gini ~ ECI + log(GDP_per_capita), data = wid_data_cleaned)
+summary(model)
+```
+
+::: {style="height: 1px;"}
+:::
+    
+    ### Modelos de Dados em Painel
+    
+    Dado que os dados são temporais e por países, apliquei modelos de dados em painel, utilizando efeitos fixos e efeitos aleatórios.
+
+``` r
+# Modelagem com Efeitos Fixos
+library(plm)
+panel_model <- plm(Gini ~ ECI + log(GDP_per_capita), data = wid_data_cleaned, model = "within")
+summary(panel_model)
+```
+
+::: {style="height: 1px;"}
+:::
+    
+    ## Resultados
+    
+    ::: {style="height: 1px;"}
+:::
+    
+    Para facilitar a interpretação dos resultados, utilizei gráficos de regressão e gráficos de dispersão para visualizar a relação entre ECI e desigualdade de renda.
+
+``` r
+# Gráfico de dispersão para ECI vs Gini
+ggplot(wid_data_cleaned, aes(x = ECI, y = Gini)) +
+    geom_point() +
+    geom_smooth(method = "lm") +
+    theme_minimal() +
+    labs(title = "Relação entre ECI e Índice de Gini")
+```

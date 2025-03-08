@@ -38,8 +38,7 @@ params:
 
 Neste relatório, apresento como apliquei conceitos e técnicas aprendidas no curso *Ciência de Dados Avançada*, semestre 2024/2, em um projeto de pesquisa. Especificamente, os apliquei para gerar o artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (de agora em diante, *Projeto*), trabalho final da disciplina *Economia do Desenvolvimento*, cursada no mesmo semestre. O artigo pode ser acessado clicando [aqui](https://drive.google.com/file/d/1xuicRVD2I5QZdf2HObj_-TefAYSYd28O/view?usp=sharing){target="_blank"}.
 
-
-Estruturei o relatório da seguinte forma. Na @sec-projeto, ***Projeto***, apresento o tema do artigo para dar contexto à análise dos dados. Em seguida, a @sec-execucao é dedicada à sua **Execução**. Ela segue a estrutura do planejamento que adotei para executar o *Projeto*, pois se divide nas seguintes seções: "Exploração dos Dados", sua "Limpeza e Estruturação", "Análise" e "Resultados". Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina no [Apêndice](#sec-appendix), com informações necessárias para garantir a **repetibilidade** (ou **reprodutibilidade computacional**)[^repetibilidade] da análise, ou seja, a possibilidade de obtermos os mesmos resultados se utilizarmos exatamente os mesmos dados, código e condições computacionais.
+Estruturei este relatório da seguinte forma. Na @sec-projeto, ***Projeto***, apresento o tema do artigo, cuja realização envolveu duas etapas: a primeira, de exploração, limpeza e estruturação dos dados; a segunda, dedicada à análise e aos resultados. Neste relatório me concentro exclusivamente na primeira etapa, que é o objeto da @sec-execucao, **Execução**. Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina na @sec-appendix, com informações sobre a **Repetibilidade** do trabalho.
 
 ::: {style="height: 1px;"}
 :::
@@ -75,7 +74,7 @@ Estruturei a realização do *Projeto* em cinco etapas:
 4)  **Resultados**: Interpretação dos achados e comparação com a literatura existente.
 5)  **Repetibilidade e Transparência**: Documentação do processo e organização do código.
 
-Todas as etapas foram conduzidas com *R Statistical Software* [@Rlanguage]. As quatro primeiras etapas são objeto, respectivamente, das subseções a seguir. Os detalhes sobre a repetibilidade e transparência dos resultados podem ser encontrados no [Apêndice](#sec-appendix).
+Todas as etapas foram conduzidas em R versão **4.4.1, 2024-06-14** [@Rlanguage]. Como mencionei na introdução, apenas as duas primeiras são objeto deste relatório. De qualquer modo, o script usado na análise e obtenção dos resultados (`analysis-proper.R`) pode ser baixado clicando [aqui](analysis-proper.R). Os detalhes sobre a repetibilidade e transparência dos resultados são tratadas na @sec-appendix.
 
 ::: {style="height: 1px;"}
 :::
@@ -277,74 +276,6 @@ head(wid_summary)
 
 Isso ilustra como as técnicas vistas no curso de *Ciência dos Dados* (funções, paralelismo, operadores do `tidyverse`, etc.) foram aplicadas para limpeza e estruturação dos dados.
 
-::: {style="height: 1px;"}
-:::
-
-## Análises
-
-::: {style="height: 1px;"}
-:::
-
-A análise realizada para o ***Projeto*** está documentado no script `analysis-proper.R` (baixe [aqui](https://github.com/samuelmaiabr/samuelmaiabr.github.io/blob/main/analysis-proper.R)).
-
-### Análise Descritiva
-
-Antes de aplicar os modelos estatísticos, fiz uma análise descritiva das variáveis principais para entender sua distribuição.
-
-``` r
-# Cálculo de estatísticas descritivas
-summary_stats <- wid_data_cleaned %>%
-  summarise(mean_eci = mean(ECI, na.rm = TRUE),
-            mean_gini = mean(Gini, na.rm = TRUE),
-            mean_gdp = mean(GDP_per_capita, na.rm = TRUE))
-summary_stats
-```
-
-::: {style="height: 1px;"}
-:::
-
-### Modelos de Regressão
-
-A relação entre ECI e desigualdade de renda foi inicialmente investigada por meio de um modelo de regressão linear simples.
-
-``` r
-# Regressão Linear Simples
-model <- lm(Gini ~ ECI + log(GDP_per_capita), data = wid_data_cleaned)
-summary(model)
-```
-
-::: {style="height: 1px;"}
-:::
-
-### Modelos de Dados em Painel
-
-Dado que os dados são temporais e por países, apliquei modelos de dados em painel, utilizando efeitos fixos e efeitos aleatórios.
-
-``` r
-# Modelagem com Efeitos Fixos
-library(plm)
-panel_model <- plm(Gini ~ ECI + log(GDP_per_capita), data = wid_data_cleaned, model = "within")
-summary(panel_model)
-```
-
-::: {style="height: 1px;"}
-:::
-
-## Resultados
-
-::: {style="height: 1px;"}
-:::
-
-Para facilitar a interpretação dos resultados, utilizei gráficos de regressão e gráficos de dispersão para visualizar a relação entre ECI e desigualdade de renda.
-
-``` r
-# Gráfico de dispersão para ECI vs Gini
-ggplot(wid_data_cleaned, aes(x = ECI, y = Gini)) +
-  geom_point() +
-  geom_smooth(method = "lm") +
-  theme_minimal() +
-  labs(title = "Relação entre ECI e Índice de Gini")
-```
 
 ::: {style="height: 1px;"}
 :::
@@ -367,6 +298,11 @@ Finalmente, não fiz uso de tudo que a WID oferece. As análises foram feitas co
 
 Outra lição foi sobre **processamento paralelo e repetibilidade**. Para garantir que o código rode de forma consistente em diferentes máquinas, é importante levar em conta limitações de hardware. Descobri que existem alternativas, como `parallel::detectCores()`, que permitem verificar o número de núcleos disponíveis antes de definir o número de *workers*, evitando que o código tente usar mais recursos do que a máquina suporta. Para projetos futuros, isso parece uma boa prática para garantir que os scripts sejam reproduzíveis em ambientes diversos.  
 
+# Repetibilidade {#sec-appendix}
+
+Seguindo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir **repetibilidade** de **reprodutibilidade**. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de *reprodutibilidade computacional*. Já a segunda, também chamada de *replicabilidade*, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente. 
+
+Para garantir a **repetibilidade** da exploração, limpeza e estruturação dos dados, acesse o **Apêndice** clicando [aqui](repetibilidade.html). Nele você poderá baixar o script `wid-SITC-cleaning.R` além de encontrar informações sobre o ambiente computacional e os pacotes utilizados.
 
 ::: {style="height: 1px;"}
 :::
@@ -378,50 +314,6 @@ Outra lição foi sobre **processamento paralelo e repetibilidade**. Para garant
 
 Agradeço a Mateus Leite pela valiosa ajuda na criação dos códigos em R. Mas claro, tanto a falta de elegância quanto eventuais falhas em seu funcionamento ficam por minha conta.
 
-# *Apêndice:* Repetibilidade e Transparência {.unnumbered #sec-appendix}
-
-Para garantir a **repetibilidade** (ou **reprodutibilidade computacional**)[^verrepetibilidade] disponibilizo dois arquivos-chave em **R**: 
-
-- **`wid-SITC-cleaning.R`**: tratamento, integração e estruturação das bases de dados.  
-- **`analysis-proper.R`**: modelos estatísticos e análises conduzidas.
-
-Esses scripts podem ser encontrados no arquivo mencionado na Seção X. Além disso, a lista completa de pacotes utilizados, juntamente com suas respectivas versões, também está disponibilizada para consulta.
-
-**Ambiente computacional:**  Todas as análises foram realizadas em R versão **4.4.1 (2024-06-14)**, com os pacotes X Y E Z. Para conferir as especificações do ambiente de trabalho, incluindo o R, o sistema operacional e as configurações locais, acesse
-
-
-## **Informações do Ambiente, Pacotes e Reprodutibilidade**
-```{r, echo=FALSE, results="asis"}
-# Exibir informações do ambiente
-cat("## 1. Informações do Ambiente\n")
-cat("```r\n")
-cat(readLines("report_data/session_infos_cleaning.txt"), sep="\n")
-cat("\n```\n\n")
-
-# Exibir pacotes usados no script (grateful)
-cat("## 2. Pacotes Usados no Script (`grateful`)\n")
-cat(readLines("report_data/grateful-reports_cleaning.html"), sep="\n")
-cat("\n\n")
-
-# Exibir lista de pacotes instalados
-library(knitr)
-installed_packages <- read.csv("report_data/installed_packagess_cleaning.csv")
-cat("## 3. Lista de Todos os Pacotes Instalados\n")
-kable(installed_packages, caption = "Lista de Pacotes Instalados")
-
-# Exibir status do `renv`, se aplicável
-if (file.exists("report_data/renv_status_cleaning.txt")) {
-  cat("\n\n## 4. Status do `renv` (se aplicável)\n")
-  cat("```r\n")
-  cat(readLines("report_data/renv_status_cleaning.txt"), sep="\n")
-  cat("\n```\n\n")
-}
-```
-
-
-
-
-[^repetibilidade]: <a id="repetibilidade"></a>Seguindo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir **repetibilidade** de **reprodutibilidade**. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de *reprodutibilidade computacional*. Já a segunda, também chamada de *replicabilidade*, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente. Neste ***Projeto***, meu principal objetivo foi *garantir a repetibilidade* da análise.
 
 [^verrepetibilidade]: Veja a nota <a href="#repetibilidade">2</a>.
 
