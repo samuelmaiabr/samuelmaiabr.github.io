@@ -13,7 +13,7 @@
 
 install.packages(c(
     "dplyr", "haven", "tidyverse", "ggplot2", "readr", "data.table", "furrr", 
-    "here", "tictoc", "showtext", "countrycode", "tikzDevice", "stringr"
+    "here", "tictoc", "showtext", "countrycode", "tikzDevice", "stringr", "grateful"
 ))
 
 library(dplyr)
@@ -29,6 +29,7 @@ library(showtext)
 library(countrycode)
 library(tikzDevice)
 library(stringr)
+library(grateful)
 
 showtext_auto()
 
@@ -196,7 +197,6 @@ glimpse(wid_test_rds)
 
 # Percentis: p0p100, p0p50, p50p90, p99p100,99p100, p99.99p100
 
-
 #### 2.2.2 Carregar dados compilados #####
 wid_full <- read_csv("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/data/processed/wid_combined.csv")
 
@@ -318,14 +318,10 @@ graph_df_share_top1 <- ggplot(df_share_top1_all, aes(x = year, y = value * 100, 
 print(graph_df_share_top1)
 
 # salvar: caminho de saída
-output_path <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/graph_share_top1.tex"
+ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/graph_share_top1.svg", plot = graph_df_share_top1, width = 8, height = 5)
 
-# abrir o tikz
-tikz(output_path, width = 8, height = 6)
-# gerar o gráfico para o TikZ
-print(graph_df_share_top1)
-# fechar o dispositivo gráfico
-dev.off()
+ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/graph_share_top1.png", plot = graph_df_share_top1, width = 8, height = 5, dpi = 300) 
+
 
 
 ##### Gini #####
@@ -370,14 +366,9 @@ graph_gini <- ggplot(df_gini_all, aes(x = year, y = value, color = country, grou
 print(graph_gini)
 
 # salvar: caminho de saída
-output_path <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/graph_gini.tex"
+ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/graph_gini.svg", plot = graph_gini, width = 8, height = 5)
 
-# abrir o tikz
-tikz(output_path, width = 8, height = 6)
-# gerar o gráfico para o TikZ
-print(graph_gini)
-# fechar o dispositivo gráfico
-dev.off()
+ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/graph_gini.png", plot = graph_gini, width = 8, height = 5, dpi = 300) 
 
 
 
@@ -732,13 +723,9 @@ top_countries <- sitc_filtered %>%
     slice_head(n = 10) %>%
     pull(country_id)
 
-# Para caso o tikz esteja ativo
-if (dev.cur() != 1) dev.off()
-dev.new()
-
 
 # Gráfico para os 10 maiores exportadores
-ggplot(sitc_filtered %>% filter(country_id %in% top_countries), 
+p <- ggplot(sitc_filtered %>% filter(country_id %in% top_countries), 
     aes(x = year, y = total_export, color = country_id, group = country_id)) +
     geom_line(linewidth = 1) +
     scale_y_continuous(
@@ -753,6 +740,11 @@ ggplot(sitc_filtered %>% filter(country_id %in% top_countries),
     ) +
     theme_minimal()
 
+
+# salvar: caminho de saída
+ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/10exporters.svg", plot = p, width = 8, height = 5)
+
+ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/writing/10exporters.png", plot = p, width = 8, height = 5, dpi = 300) 
 
 
 #### 10.2 Exportação por região #####
@@ -1090,6 +1082,7 @@ print("Análises concluídas")
 
 # =========== # =========== # =========== # =========== # =========== # =========== #
 # =========== # =========== # =========== # =========== # =========== # =========== #
+### ~ ####
 ### 15. CONTANDO OBSERVAÇÕES ####
 
 # Criar diretório de saída
@@ -1125,7 +1118,7 @@ output_dir_vis <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopmen
 dir.create(output_dir_vis, showWarnings = FALSE, recursive = TRUE)
 
 
-ggplot(all_counts, aes(x = factor(decade), y = n, fill = variable)) +
+z <- ggplot(all_counts, aes(x = factor(decade), y = n, fill = variable)) +
     geom_bar(stat = "identity", position = "dodge") +
     facet_wrap(~ category, scales = "free_y") +
     labs(title = "Distribuição de observações por década e variável",
@@ -1140,14 +1133,17 @@ ggplot(all_counts, aes(x = factor(decade), y = n, fill = variable)) +
     ) +
     scale_y_continuous(labels = scales::comma)
 
-# Configurar `tikzDevice`
-options(tikzDefaultEngine = "xetex")  # Para evitar problemas com Unicode
+print(z)
 
-# Abrir o TikZ para exportar o gráfico
-tikz(output_path, width = 8, height = 6)
+# Salvando
+ggsave("obs_decada.svg", plot = z, width = 8, height = 5)  # Salvar como SVG (alta qualidade)
+ggsave("obs_decada.png", plot = z, width = 8, height = 5, dpi = 300)  # PNG (compacto)
+
+
+
 
 # Criar gráfico de barras empilhadas para cada categoria
-ggplot(all_counts, aes(x = factor(decade), y = n, fill = variable)) +
+q <- ggplot(all_counts, aes(x = factor(decade), y = n, fill = variable)) +
     geom_bar(stat = "identity", position = "dodge") +
     facet_wrap(~ category, scales = "free_y") +
     labs(title = "Distribuição de observações por década e variável",
@@ -1162,14 +1158,15 @@ ggplot(all_counts, aes(x = factor(decade), y = n, fill = variable)) +
     ) +
     scale_y_continuous(labels = scales::comma)
 
-# Fechar o dispositivo gráfico para salvar
-dev.off()
+print(q)
 
 # Veja como o número de observações para as décadas de 1960 e 1970 é muito baixo para todas as variáveis.
 # O número de obs para todas as variáveis cuja unidade é "i" é muito baixo se comparados às variáveis "j".
 
 
 
+####################################### = #
+### ~ ####
 ### 16. COMPARAÇÃO DE RESULTADOS COM E SEM NAs ####
 
 # Listas para armazenar os coeficientes
@@ -1245,12 +1242,10 @@ print(summary_table)
 
 
 # Graficando
-options(tikzDefaultEngine = "xetex")
 
 # Definir o caminho e nome do arquivo
 output_path <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/visualizations/graph_coefficients_na_nnas.tex"
-# Abrir tikz
-tikz(output_path, width = 8, height = 6)
+
 # Gráficos comparando os coeficientes estimados
 ggplot(comparison_df, aes(x = Type, y = Estimate, fill = Type)) +
     geom_boxplot() +
@@ -1261,17 +1256,12 @@ ggplot(comparison_df, aes(x = Type, y = Estimate, fill = Type)) +
         y = "Coeficiente estimado",
         x = "Tipo de análise"
     )
-# Fechar o dispositivo para salvar
-dev.off()
 
 
 # Graficando 2
-options(tikzDefaultEngine = "xetex")
 
 # Definir o caminho e nome do arquivo
 output_path <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/visualizations/graph_p-values_na_nnas.tex"
-# Abrir TikZ
-tikz(output_path, width = 8, height = 6)
 # Criar gráficos comparando os p-values
 ggplot(comparison_df, aes(x = Type, y = pValue, fill = Type)) +
     geom_boxplot() +
@@ -1284,8 +1274,7 @@ ggplot(comparison_df, aes(x = Type, y = pValue, fill = Type)) +
         y = "p-value",
         x = "Tipo de análise"
     )
-# Fechar o dispositivo para salvar
-dev.off()
+
 # =========== # =========== # =========== # =========== # =========== # =========== #
 
 
@@ -1476,11 +1465,6 @@ ggsave("/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/wor
 
 
 
-
-
-
-options(tikzDefaultEngine = "xetex")
-
 output_path <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/visualizations/grafico_br.tex"
 
 
@@ -1516,9 +1500,6 @@ grafico_br <- ggplot(data = df_br, aes(x = year, y = value, fill = variable)) +
 print(grafico_br)
 
 
-# Fechar o dispositivo gráfico
-dev.off()
-
 
 #### 18.2.2 México ####
 
@@ -1544,7 +1525,7 @@ scale_color_manual(values = color_palette,
     )
 )
  +
-    scale_y_continuous(breaks = seq(0, 100, 20)) +  # Ajustar o eixo Y corretamente
+scale_y_continuous(breaks = seq(0, 100, 20)) +  # Ajustar o eixo Y corretamente
     theme_minimal(base_family = "lmodern") +  # Fonte LaTeX
     labs(title = "México: de surveys à renda nacional",
         x = "", y = "% da renda nacional bruta") +
@@ -1560,16 +1541,7 @@ str(df_mx$variable)
 str(survey_income_estimated_mx$variable)
 
 
-
-
-
-
-options(tikzDefaultEngine = "xetex")
-
 output_path <- "/Users/samuelmaia/Desktop/2024-2/economics of underdevelopment/paper/work/project-inequality-eci/visualizations/grafico_mx.tex"
-
-# Abrir TikZ
-tikz(output_path, width = 8, height = 6)
 
 # Criar e salvar o gráfico
 survey_income_estimated_mx$variable <- factor(survey_income_estimated_mx$variable, 
@@ -1618,8 +1590,15 @@ print(grafico_mx)
 
 
 
+# Corrigir o fator ANTES de usar no ggplot
+survey_income_estimated_mx$variable <- factor(survey_income_estimated_mx$variable, 
+    levels = c("apricoi992", "aprigoi992", "aprihni992", "asschni992", "surveyIncome"),
+    labels = c("Corporações", "Governo geral", "Setor domiciliar", "Contribuições para a seguridade", "Renda de surveys"))
+
+# Agora o gráfico funciona corretamente
 grafico_mx <- ggplot(data = df_mx, aes(x = year, y = value, fill = variable)) +
-    geom_area(position = "stack", alpha = 0.7) +  # Empilha corretamente as áreas +
+    geom_area(position = "stack", alpha = 0.7) +  # Áreas empilhadas
+    
     geom_line(data = survey_income_estimated_mx, aes(x = year, y = value, color = variable, group = 1), 
         size = 1, linetype = "solid") +  # Linha para survey income
     
@@ -1628,11 +1607,10 @@ grafico_mx <- ggplot(data = df_mx, aes(x = year, y = value, fill = variable)) +
     
     scale_fill_manual(values = color_palette) +
     scale_color_manual(values = color_palette, 
-        breaks = names(color_palette),
-        survey_income_estimated_mx$variable <- factor(survey_income_estimated_mx$variable, 
-            levels = c("apricoi992", "aprigoi992", "aprihni992", "asschni992", "surveyIncome"),
-            labels = c("Corporações", "Governo geral", "Setor domiciliar", "Contribuições para a seguridade", "Renda de surveys")) +
-    scale_y_continuous(breaks = seq(0, 100, 20)) +  # Ajustar o eixo Y corretamente
+        breaks = names(color_palette)) +  # Apenas os valores, sem atribuição de fator
+    
+    scale_y_continuous(breaks = seq(0, 100, 20)) +  # Ajusta o eixo Y corretamente
+    
     theme_minimal() +
     labs(title = "México: de surveys à renda nacional",
         x = "", y = "\\% da renda nacional bruta") +
@@ -1641,9 +1619,34 @@ grafico_mx <- ggplot(data = df_mx, aes(x = year, y = value, fill = variable)) +
         plot.title = element_text(hjust = 0.5)
     )
 
-# Fechar o dispositivo gráfico
-dev.off()
+print(grafico_mx)
 
+# =========== # =========== # =========== # =========== # =========== # =========== #
+
+
+# =========== # =========== # =========== # =========== # =========== # =========== #
+## ~ ####
+## 19. REPETIBILIDADE COMPUTACIONAL ####
+
+# Vamos salvar infos do ambiente, de todos os pacotes instalados, dos pacotes usados na sessão junto de suas referências (pacote `grateful`) e salvar status do ambiente com renv
+
+# diretório para armazenar os arquivos do report
+dir.create("report_data", showWarnings = FALSE)
+
+# sessionInfo
+writeLines(capture.output(sessionInfo()), "report_data/session_info.txt")
+
+#  relatório de citações dos pacotes usados no script (grateful)
+cite_packages(out.dir = "report_data")
+
+# salvar lista completa de pacotes instalados no sistema
+installed_packages <- installed.packages()[, c("Package", "Version")]
+write.csv(installed_packages, "report_data/installed_packages.csv", row.names = FALSE)
+
+#  salvar o status do ambiente com renv
+if ("renv" %in% rownames(installed.packages())) {
+    writeLines(capture.output(renv::status()), "report_data/renv_status.txt")
+}
 # =========== # =========== # =========== # =========== # =========== # =========== #
 
 

@@ -39,7 +39,7 @@ params:
 Neste relatório, apresento como apliquei conceitos e técnicas aprendidas no curso *Ciência de Dados Avançada*, semestre 2024/2, em um projeto de pesquisa. Especificamente, os apliquei para gerar o artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (de agora em diante, *Projeto*), trabalho final da disciplina *Economia do Desenvolvimento*, cursada no mesmo semestre. O artigo pode ser acessado clicando [aqui](https://drive.google.com/file/d/1xuicRVD2I5QZdf2HObj_-TefAYSYd28O/view?usp=sharing){target="_blank"}.
 
 
-Estruturei o relatório da seguinte forma. Na @sec-projeto, ***Projeto***, apresento o tema do artigo para dar contexto à análise dos dados. Em seguida, a @sec-execucao é dedicada à sua **Execução**. Ela segue a estrutura do planejamento que adotei para executar o *Projeto*, pois se divide nas seguintes seções: "Exploração dos Dados", sua "Limpeza e Estruturação", "Análise" e "Resultados". Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina no [Apêndice](#sec-appendix), com informações necessárias para garantir a repetibilidade da análise, em especial detalhes do ambiente computacional e dos pacotes utilizados.
+Estruturei o relatório da seguinte forma. Na @sec-projeto, ***Projeto***, apresento o tema do artigo para dar contexto à análise dos dados. Em seguida, a @sec-execucao é dedicada à sua **Execução**. Ela segue a estrutura do planejamento que adotei para executar o *Projeto*, pois se divide nas seguintes seções: "Exploração dos Dados", sua "Limpeza e Estruturação", "Análise" e "Resultados". Na @sec-cozinha apresento a **Cozinha de Pesquisa**, com as limitações enfrentados e aprendizado adquirido no processo. O relatório termina no [Apêndice](#sec-appendix), com informações necessárias para garantir a **repetibilidade** (ou **reprodutibilidade computacional**)[^repetibilidade] da análise, ou seja, a possibilidade de obtermos os mesmos resultados se utilizarmos exatamente os mesmos dados, código e condições computacionais.
 
 ::: {style="height: 1px;"}
 :::
@@ -136,32 +136,35 @@ O Atlas disponibiliza os dados estruturados segundo dois sistemas de classifica�
 
 ## Limpeza e Estruturação dos Dados
 
-O processo de limpeza e integração dos dados da WID e da SITC, Rev. 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R)). Entre todas as fases do projeto, foi essa a mais trabalhosa. Resumidamente, segui os seguinets passos:
+O processo de limpeza e integração dos dados da WID e da SITC, Rev. 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R)). Resumidamente, segui os seguintes passos:
     
 1. **Carregamento e Combinação da WID**  
 
-- Utilizei processamento paralelo (`future_map_dfr()` em R) para ler todos os arquivos e concatená-los em um único *data frame* (`wid_full`).
-- A seguir, selecionei apenas as variáveis de interesse (Gini, Palma, *share* do topo, GDP, população, etc.). Isso reduziu bastante o tamanho e a complexidade do *dataset* final.
-
-- A *Tabela 4* apresenta as variáveis  utilizados no Projeto -- incluindo Gini, razão de Palma, fração de renda do topo (shares) e seus respectivos percentis. Observa-se que ‘equal-split’ implica uma distribuição homogênea da renda dentro dos domicílios, o que amplia o número de observações disponíveis. Também selecionei as variáveis de **GDP per capita** e *população*, também disponibilizadas na WID, para criar métricas comparáveis entre países e ao longo do tempo.
-
-&nbsp;
+- Todos os arquivos da WID foram lidos e concatenados em um único *data frame* (`wid_full`). Para otimizar esta etapa, utilizei processamento paralelo (`future_map_dfr()`), que distribui a carga de trabalho entre múltiplos núcleos do computador.
+- A seguir, selecionei apenas as variáveis de interesse do **Projeto** (veja a *Tabela 4* abaixo): Gini, razão de Palma (razão da renda apropriada pelos 10% mais ricos e os 40% mais pobres), e renda apropriada por diferentes frações (50% mais pobres, 40% intermediários, e 10%, 1%, 0,1%, 0,01%, 0,001% mais ricos).
 
 <div class="small-table">
 
 | **código**   | **tipo**   | **renda**         | **percentis** |
 |-------------|-----------|------------------|------------------------------------------------------|
 | `sptincj992`  | fração    | pré-tributação   | `p050`, `p50p90`, `p90p100`, `p99p100`, `p99.9p100`, `99.99p100`, `99.999p100` |
-| `sdiincj992`  | fração    | pós-tributação   | `p050`, `p50p90`, `p90p100`, `p99p100`, `99.99p100`, `99.999p100` |
+| `sdiincj992`  | fração    | pós-tributação   | `p050`, `p50p90`, `p90p100`, `p99p100`, `p99.9p100`, `p99.9p100`, `99.999p100` |
 | `gptincj992`  | Gini      | pré-tributação   | `p0100` |
 | `gdiincj992`  | Gini      | pós-tributação   | `p0100` |
 | `rptincj992`  | Palma     | pré-tributação   | `p0p40`, `p90p100` |
+| `rdiincj992`  | Palma     | pré-tributação   | `p0p40`, `p90p100` |
 
 : Tabela 4:  Variáveis da WID selecionadas</span>
 
 </div>
 
 &nbsp;
+
+- Duas coisas devem ser notadas. Além das variáveis distributivas, precisamos definir o conceito de renda. Dentre os diversos disponíveis na WID, optei pela renda pré-tributação (`ptinc`) e pela renda pós-tribução (`diinc`). Isso permitiria avaliar a interação da redistribuição de renda com a complexidade e desigualdade. Segundo, é necessário estabelecer a unidade e a faixa etária das variáveis de desigualdade (veja a **Tabela 3**). Minha escolha foi orientada pela disponibilidade de dados. Como podemos ver na **Figura 1**, a unidade "equal-split", que divide a renda familiar igualmente entre adultos no domicílio (`j`) é significativamente mais abrangente do que a unidade individual, assim como a faixa etária que considera indivíduos com 20 anos ou mais (`992`). A explicação para essas escolhas é a distribuição dos dados da WID. Conforme é possível ver na *Figura 1*.
+
+
+
+- Por fim, também selecionei as variáveis de **GDP** e *população*, também disponibilizadas na WID, necessárias para o cálculo do PIB per capita, utilizado como controle na fase de análise.
 
 - Várias colunas referentes a percentis (ex.: `p99p100`, `p90p100`) foram reorganizadas para serem interpretadas corretamente (mantendo-as como *string* para evitar erros de arredondamento).
 - Concluída a filtragem, gerei *data frames* intermediários e salvei-os em formato `.csv` e `.rds` para que cada estágio do pipeline fosse repetível.
@@ -282,6 +285,8 @@ Isso ilustra como as técnicas vistas no curso de *Ciência dos Dados* (funçõe
 ::: {style="height: 1px;"}
 :::
 
+A análise realizada para o ***Projeto*** está documentado no script `analysis-proper.R` (baixe [aqui](https://github.com/samuelmaiabr/samuelmaiabr.github.io/blob/main/analysis-proper.R)).
+
 ### Análise Descritiva
 
 Antes de aplicar os modelos estatísticos, fiz uma análise descritiva das variáveis principais para entender sua distribuição.
@@ -375,9 +380,7 @@ Agradeço a Mateus Leite pela valiosa ajuda na criação dos códigos em R. Mas 
 
 # *Apêndice:* Repetibilidade e Transparência {.unnumbered #sec-appendix}
 
-Para garantir a **repetibilidade**[^repetibilidade], ou seja, a possibilidade de se obterem os mesmos resultados quando se utilizam exatamente os mesmos dados, código e condições de análise.
-
-Disponibilizo dois arquivos-chave em **R**: 
+Para garantir a **repetibilidade** (ou **reprodutibilidade computacional**)[^verrepetibilidade] disponibilizo dois arquivos-chave em **R**: 
 
 - **`wid-SITC-cleaning.R`**: tratamento, integração e estruturação das bases de dados.  
 - **`analysis-proper.R`**: modelos estatísticos e análises conduzidas.
@@ -386,7 +389,41 @@ Esses scripts podem ser encontrados no arquivo mencionado na Seção X. Além di
 
 **Ambiente computacional:**  Todas as análises foram realizadas em R versão **4.4.1 (2024-06-14)**, com os pacotes X Y E Z. Para conferir as especificações do ambiente de trabalho, incluindo o R, o sistema operacional e as configurações locais, acesse
 
-[^repetibilidade]: Seguindo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir **repetibilidade** de **reprodutibilidade** (ou “computational reproducibility”): a primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo conjunto de dados e o mesmo código (focando, portanto, no ambiente computacional original), enquanto a segunda (ou *replicabilidade*, em outra denominação) implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente. Por fim, há ainda o conceito de **generalizabilidade**, que se refere à extensão dos resultados para diferentes contextos ou populações. Neste relatório, nosso principal objetivo foi **garantir a repetibilidade** das análises apresentadas.
+
+## **Informações do Ambiente, Pacotes e Reprodutibilidade**
+```{r, echo=FALSE, results="asis"}
+# Exibir informações do ambiente
+cat("## 1. Informações do Ambiente\n")
+cat("```r\n")
+cat(readLines("report_data/session_infos_cleaning.txt"), sep="\n")
+cat("\n```\n\n")
+
+# Exibir pacotes usados no script (grateful)
+cat("## 2. Pacotes Usados no Script (`grateful`)\n")
+cat(readLines("report_data/grateful-reports_cleaning.html"), sep="\n")
+cat("\n\n")
+
+# Exibir lista de pacotes instalados
+library(knitr)
+installed_packages <- read.csv("report_data/installed_packagess_cleaning.csv")
+cat("## 3. Lista de Todos os Pacotes Instalados\n")
+kable(installed_packages, caption = "Lista de Pacotes Instalados")
+
+# Exibir status do `renv`, se aplicável
+if (file.exists("report_data/renv_status_cleaning.txt")) {
+  cat("\n\n## 4. Status do `renv` (se aplicável)\n")
+  cat("```r\n")
+  cat(readLines("report_data/renv_status_cleaning.txt"), sep="\n")
+  cat("\n```\n\n")
+}
+```
+
+
+
+
+[^repetibilidade]: <a id="repetibilidade"></a>Seguindo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir **repetibilidade** de **reprodutibilidade**. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de *reprodutibilidade computacional*. Já a segunda, também chamada de *replicabilidade*, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente. Neste ***Projeto***, meu principal objetivo foi *garantir a repetibilidade* da análise.
+
+[^verrepetibilidade]: Veja a nota <a href="#repetibilidade">2</a>.
 
 ::: {style="height: 1px;"}
 :::

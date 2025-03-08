@@ -1,0 +1,86 @@
+---
+title: "Anexo: 'Complexidade Econômica e Desigualdade de Renda:'"
+author: Samuel Maia, Cedeplar, UFMG
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    toc-title: "Repetibilidade"
+css: styles_replication.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(htmltools)
+```
+
+Neste documento, você encontrará um registro completo do ambiente computacional utilizado na execução do script `wid-SITC-cleaning.R` (disponível para baixar [aqui](wid-SITC-cleaning.R). Esse script foi empregado na exploração, limpeza e estruturação dos dados do artigo "Complexidade Econômica e Desigualdade de Renda: a vista do topo é diferente" (***Projeto***). Para acessar o relatório principal, do qual este documento é um complemento, clique [aqui](https://samuelmaiabr.github.io/).
+ 
+Aqui, o objetivo principal é permitir que seja possível:
+
+- recriar o ambiente de trabalho usado na análise do ***Projeto***
+- identificar versões específicas de pacotes utilizados
+- entender as dependências do sistema
+- validar a integridade do ambiente através do `renv`
+
+**Componentes principais incluídos:**
+
+1. Especificações técnicas do sistema
+2. Inventário completo de pacotes instalados
+3. Mapa de dependências entre pacotes
+4. Estado de conservação do ambiente virtual
+5. Metadados críticos para replicação
+
+# Informações do Ambiente {.unnumbered}
+
+```{r, echo=FALSE}
+cat(readLines("/Users/samuelmaia/Documents/report-data-science/report_data/session_infos_cleaning.txt"), sep = "\n")
+```
+
+# Análise de Dependências {.unnumbered}
+
+## Pacotes Críticos e suas referências
+
+Gerado com o pacote `grateful`.
+
+```{r}
+#| classes: "grateful-iframe"
+htmltools::tags$iframe(
+  src = "/Users/samuelmaia/Documents/report-data-science/report_data/grateful-reports_cleaning-1.html",
+  width = "100%",
+  height = "600px",
+  style = "border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.1);"
+)
+```
+
+## Lista completa de pacotes instalados
+```{r}
+#| classes: "packages-table"
+installed_packages <- read.csv("/Users/samuelmaia/Documents/report-data-science/report_data/installed_packagess_cleaning.csv")
+
+knitr::kable(
+  installed_packages,
+  caption = "Pacotes Instalados (Total: `r nrow(installed_packages)`)",
+  col.names = c("Pacote", "Versão"),
+  table.attr = "class='compact-table'"
+) |> 
+  kableExtra::kable_styling(
+    bootstrap_options = c("striped", "hover"),
+    full_width = TRUE,
+    font_size = 12
+  )
+```
+
+# Gestão de Ambiente {.unnumbered}
+
+## Status do `renv`
+```{r}
+#| classes: "renv-status"
+renv_status <- if(file.exists("/Users/samuelmaia/Documents/report-data-science/report_data/renv_status_cleaning.txt")) {
+  paste(readLines('/Users/samuelmaia/Documents/report-data-science/report_data/renv_status_cleaning.txt'), collapse = "\n")
+} else {
+  "Status não disponível"
+}
+
+cat(renv_status)
+```
