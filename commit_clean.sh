@@ -14,6 +14,7 @@ read commit_message
 
 # Adicionar todas as mudanças
 git add -A
+git add commit_clean.sh  # Garante que o script também seja commitado
 
 # Criar commit
 git commit -m "$commit_message"
