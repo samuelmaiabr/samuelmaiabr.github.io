@@ -13,7 +13,7 @@ echo "Digite a mensagem do commit:"
 read commit_message
 
 # Adicionar todas as mudanças
-git add .
+git add -A
 
 # Criar commit
 git commit -m "$commit_message"
