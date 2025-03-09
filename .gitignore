@@ -2,3 +2,20 @@
 .Rhistory
 .RData
 .Ruserdata
+
+# LaTeX temporários
+*.aux
+*.log
+*.bbl
+*.blg
+*.bcf
+*.out
+*.toc
+*.lof
+*.lot
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.vrb
