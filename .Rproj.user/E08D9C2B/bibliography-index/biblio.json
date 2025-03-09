@@ -1,0 +1,2353 @@
+{
+    "sources": [
+        {
+            "author": [
+                {
+                    "family": "Maia",
+                    "given": "Samuel"
+                }
+            ],
+            "id": "Maia2024",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "Trabalho final da disciplina Economia do Desenvolvimento (2024/2), Cedeplar - UFMG",
+            "title": "Complexidade econômica e desigualdade de renda: A vista do topo é diferente",
+            "title-short": "Complexidade econômica e desigualdade de renda",
+            "type": "manuscript"
+        },
+        {
+            "DOI": "10.7910/DVN/H8SFD2",
+            "URL": "https://doi.org/10.7910/DVN/H8SFD2",
+            "author": [
+                {
+                    "literal": "Harvard Growth Lab"
+                }
+            ],
+            "id": "atlas2019SITC2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "publisher": "Harvard Dataverse",
+            "title": "International Trade Data (SITC, Rev. 2)",
+            "type": "dataset",
+            "version": "V11"
+        },
+        {
+            "author": [
+                {
+                    "family": "Alvaredo",
+                    "given": "Facundo"
+                },
+                {
+                    "family": "Bourguignon",
+                    "given": "François"
+                },
+                {
+                    "family": "Ferreira",
+                    "given": "Francisco"
+                },
+                {
+                    "family": "Lustig",
+                    "given": "Nora"
+                }
+            ],
+            "id": "Alvaredo2023",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "number": "IDB-WP-01521",
+            "publisher": "Inter-American Development Bank",
+            "title": "Seventy-five years of measuring income inequality in latin america",
+            "type": "report"
+        },
+        {
+            "URL": "https://wid.world/codes-dictionary/",
+            "author": [
+                {
+                    "literal": "World Inequality Database"
+                }
+            ],
+            "id": "wid_codes_dictionary",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "Documento técnico sobre a estrutura da World Inequality Database (WID).",
+            "title": "Codes Dictionary",
+            "type": ""
+        },
+        {
+            "DOI": "10.17226/25303",
+            "ISBN": "9780309486163",
+            "author": [
+                {
+                    "family": "National Academies of Sciences",
+                    "suffix": "Engineering"
+                },
+                {
+                    "family": "Medicine"
+                }
+            ],
+            "id": "rrc2019",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019,
+                        9
+                    ]
+                ]
+            },
+            "publisher": "National Academies Press",
+            "title": "Reproducibility and replicability in science",
+            "type": "book"
+        },
+        {
+            "URL": "https://www.R-project.org/",
+            "author": [
+                {
+                    "literal": "R Core Team"
+                }
+            ],
+            "id": "Rlanguage",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "literal": "Nações Unidas"
+                }
+            ],
+            "id": "un2009sna",
+            "issued": {
+                "date-parts": [
+                    [
+                        2009
+                    ]
+                ]
+            },
+            "publisher": "Nações Unidas",
+            "publisher-place": "Nova Iorque",
+            "title": "The system of national accounts",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Pareto",
+                    "given": "Vilfredo"
+                }
+            ],
+            "editor": [
+                {
+                    "family": "Montesano",
+                    "given": "Aldo"
+                },
+                {
+                    "family": "Zanni",
+                    "given": "Alberto"
+                },
+                {
+                    "family": "Bruni",
+                    "given": "Luigino"
+                },
+                {
+                    "family": "Chipman",
+                    "given": "John S."
+                },
+                {
+                    "family": "McLure",
+                    "given": "Michael"
+                }
+            ],
+            "id": "pareto1896",
+            "issued": {
+                "date-parts": [
+                    [
+                        1896
+                    ]
+                ]
+            },
+            "page": "720",
+            "publisher": "Oxford University Press",
+            "publisher-place": "Oxford",
+            "title": "Manual of political economy: A critical and variorum edition",
+            "title-short": "Manual of political economy",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Medeiros",
+                    "given": "Marcelo"
+                },
+                {
+                    "family": "Souza",
+                    "given": "Pedro H. G."
+                },
+                {
+                    "dropping-particle": "de",
+                    "family": "Castro",
+                    "given": "Fábio Avila"
+                }
+            ],
+            "container-title": "Dados",
+            "id": "medeiros2015topo",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "page": "7-36",
+            "publisher": "Instituto de Estudos Sociais e Políticos da Universidade do Estado do Rio de Janeiro",
+            "title": "O topo da distribuição de renda no brasil: Primeiras estimativas com dados tributários e comparação com pesquisas domiciliares, 2006-2012",
+            "title-short": "O topo da distribuição de renda no brasil",
+            "type": "article-journal",
+            "volume": "58"
+        },
+        {
+            "author": [
+                {
+                    "dropping-particle": "de",
+                    "family": "Souza",
+                    "given": "Pedro Herculano Guimarães Ferreira"
+                }
+            ],
+            "genre": "Tese de Doutorado em Sociologia",
+            "id": "souza2016desigualdade",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Universidade de Brasília (UnB)",
+            "title": "A desigualdade vista do topo: A concentração de renda entre os ricos no brasil, 1926-2013",
+            "title-short": "A desigualdade vista do topo",
+            "type": "thesis"
+        },
+        {
+            "DOI": "10.1093/qje/qjx043",
+            "author": [
+                {
+                    "family": "Piketty",
+                    "given": "Thomas"
+                },
+                {
+                    "family": "Saez",
+                    "given": "Emmanuel"
+                },
+                {
+                    "family": "Zucman",
+                    "given": "Gabriel"
+                }
+            ],
+            "container-title": "The Quarterly Journal of Economics",
+            "id": "piketty2018distributional",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018,
+                        5
+                    ]
+                ]
+            },
+            "page": "553-609",
+            "title": "Distributional national accounts: Methods and estimates for the united states",
+            "title-short": "Distributional national accounts",
+            "type": "article-journal",
+            "volume": "133"
+        },
+        {
+            "URL": "https://www.R-project.org/",
+            "author": [
+                {
+                    "literal": "R Core Team"
+                }
+            ],
+            "id": "r2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "literal": "OECD"
+                }
+            ],
+            "id": "oecd2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "publisher": "OECD Publishing",
+            "publisher-place": "Paris",
+            "title": "In it together: Why less inequality benefits all",
+            "title-short": "In it together",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "literal": "OECD"
+                }
+            ],
+            "id": "oecd2011",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "publisher": "OECD Publishing",
+            "publisher-place": "Paris",
+            "title": "Divided we stand: Why inequality keeps rising",
+            "title-short": "Divided we stand",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Milanović",
+                    "given": "Branko"
+                }
+            ],
+            "id": "Milanovic2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Harvard University Press",
+            "publisher-place": "Cambridge, MA",
+            "title": "Global inequality: A new approach for the age of globalization",
+            "title-short": "Global inequality",
+            "type": "book"
+        },
+        {
+            "DOI": "10.7910/dvn/xtaqmc",
+            "URL": "https://doi.org/10.7910/dvn/xtaqmc",
+            "author": [
+                {
+                    "literal": "Harvard Growth Lab"
+                }
+            ],
+            "id": "GrowthLab2019",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "note": "SITC Rev. 2",
+            "title": "Growth projections and complexity rankings, V2, SITC rev. 2",
+            "type": ""
+        },
+        {
+            "URL": "http://www.atlas.hks.harvard.edu/",
+            "author": [
+                {
+                    "literal": "Harvard Growth Lab"
+                }
+            ],
+            "id": "atlasEconomicComplexity",
+            "title": "The atlas of economic complexity",
+            "type": ""
+        },
+        {
+            "author": [
+                {
+                    "family": "Pinto",
+                    "given": "Aníbal"
+                }
+            ],
+            "container-title": "Cinquenta anos de pensamento na CEPAL",
+            "editor": [
+                {
+                    "family": "Bielschowsky",
+                    "given": "Ricardo"
+                }
+            ],
+            "id": "pinto2000b",
+            "issued": {
+                "date-parts": [
+                    [
+                        2000
+                    ]
+                ]
+            },
+            "page": "609-649",
+            "publisher": "Editora Record/CEPAL, Cofecon",
+            "publisher-place": "Rio de Janeiro",
+            "title": "Notas sobre os estilos de desenvolvimento na américa latina",
+            "translator": [
+                {
+                    "family": "Ribeiro",
+                    "given": "Vera"
+                }
+            ],
+            "type": "chapter",
+            "volume": "2"
+        },
+        {
+            "URL": "https://repositorio.cepal.org/bitstream/handle/11362/44616/1/S1900253_pt.pdf",
+            "author": [
+                {
+                    "family": "Rugitsky",
+                    "given": "F. M."
+                }
+            ],
+            "container-title": "Alternativas para o desenvolvimento brasileiro: Novos horizontes para a mudança estrutural com igualdade",
+            "id": "Rugitsky2019",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "publisher": "CEPAL",
+            "publisher-place": "Santiago",
+            "title": "Questão de estilo: A mudança estrutural para a igualdade e seus desafios",
+            "title-short": "Questão de estilo",
+            "type": "chapter"
+        },
+        {
+            "author": [
+                {
+                    "family": "Furtado",
+                    "given": "Celso"
+                }
+            ],
+            "id": "furtado1992construcao",
+            "issued": {
+                "date-parts": [
+                    [
+                        1992
+                    ]
+                ]
+            },
+            "publisher": "Paz e Terra",
+            "publisher-place": "Rio de Janeiro",
+            "title": "Brasil: A construção interrompida",
+            "title-short": "Brasil",
+            "type": "book"
+        },
+        {
+            "DOI": "10.1111/1475-5890.12371",
+            "ISSN": "1475-5890",
+            "author": [
+                {
+                    "family": "Carranza",
+                    "given": "Rafael"
+                },
+                {
+                    "family": "Nolan",
+                    "given": "Brian"
+                }
+            ],
+            "container-title": "Fiscal Studies",
+            "id": "Carranza2024",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024,
+                        6
+                    ]
+                ]
+            },
+            "page": "501-519",
+            "title": "Assessing income redistribution: What are the key analytic choices?",
+            "title-short": "Assessing income redistribution",
+            "type": "article-journal",
+            "volume": "45"
+        },
+        {
+            "URL": "https://wid.world/document/distributional-national-accounts-guidelines-2020-concepts-and-methods-used-in-the-world-inequality-database/",
+            "author": [
+                {
+                    "family": "Blanchet",
+                    "given": "Thomas"
+                },
+                {
+                    "family": "Chancel",
+                    "given": "Lucas"
+                },
+                {
+                    "family": "Flores",
+                    "given": "Ignacio"
+                },
+                {
+                    "family": "Morgan",
+                    "given": "Marc"
+                }
+            ],
+            "id": "blanchet2024distributional",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "publisher": "World Inequality Lab",
+            "title": "Distributional national accounts guidelines: Methods and concepts used in the world inequality database",
+            "title-short": "Distributional national accounts guidelines",
+            "type": "report"
+        },
+        {
+            "DOI": "10.1111/rsp3.12470",
+            "ISSN": "1757-7802",
+            "author": [
+                {
+                    "family": "Asamoah",
+                    "given": "Lawrence Adu"
+                },
+                {
+                    "family": "Figari",
+                    "given": "Francesco"
+                },
+                {
+                    "family": "Vezzulli",
+                    "given": "Andrea"
+                }
+            ],
+            "container-title": "Regional Science Policy & Practice",
+            "id": "Asamoah2021",
+            "issue": "5",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        10
+                    ]
+                ]
+            },
+            "page": "1661-1686",
+            "title": "Spillover effects of innovation and entrepreneurial activity on income inequality in developing countries: A spatial panel approach",
+            "title-short": "Spillover effects of innovation and entrepreneurial activity on income inequality in developing countries",
+            "type": "article-journal",
+            "volume": "13"
+        },
+        {
+            "URL": "https://hal.science/hal-03426719/document",
+            "author": [
+                {
+                    "family": "Barza",
+                    "given": "Radu"
+                },
+                {
+                    "family": "Jara-Figueroa",
+                    "given": "Cristian"
+                },
+                {
+                    "family": "Hidalgo",
+                    "given": "César A."
+                },
+                {
+                    "family": "Viarengo",
+                    "given": "Martina"
+                }
+            ],
+            "collection-title": "CESifo working paper series",
+            "id": "barza2020knowledge",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "number": "8543",
+            "publisher": "cesifo",
+            "title": "Knowledge intensity and gender wage gaps: Evidence from linked employer-employee data",
+            "title-short": "Knowledge intensity and gender wage gaps",
+            "type": "report"
+        },
+        {
+            "DOI": "10.1515/ger-2021-0070",
+            "ISSN": "1465-6485",
+            "author": [
+                {
+                    "family": "Basile",
+                    "given": "Roberto"
+                },
+                {
+                    "family": "Cicerone",
+                    "given": "Gloria"
+                }
+            ],
+            "container-title": "German Economic Review",
+            "id": "Basile2022",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022,
+                        3
+                    ]
+                ]
+            },
+            "page": "567-594",
+            "title": "Economic complexity and productivity polarization: Evidence from italian provinces",
+            "title-short": "Economic complexity and productivity polarization",
+            "type": "article-journal",
+            "volume": "23"
+        },
+        {
+            "DOI": "10.2139/ssrn.3340913",
+            "ISSN": "1556-5068",
+            "author": [
+                {
+                    "family": "Ben Saâd",
+                    "given": "Myriam"
+                },
+                {
+                    "family": "Assoumou-Ella",
+                    "given": "Giscard"
+                }
+            ],
+            "container-title": "SSRN Electronic Journal",
+            "id": "Sa&acirc2019",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "title": "Economic complexity and gender inequality in education: An empirical study",
+            "title-short": "Economic complexity and gender inequality in education",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.1080/00130095.2016.1205947",
+            "ISSN": "1944-8287",
+            "author": [
+                {
+                    "family": "Balland",
+                    "given": "Pierre-Alexandre"
+                },
+                {
+                    "family": "Rigby",
+                    "given": "David"
+                }
+            ],
+            "container-title": "Economic Geography",
+            "id": "Balland2016",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016,
+                        7
+                    ]
+                ]
+            },
+            "page": "1-23",
+            "publisher": "Informa UK Limited",
+            "title": "The geography of complex knowledge",
+            "type": "article-journal",
+            "volume": "93"
+        },
+        {
+            "DOI": "10.1016/j.respol.2015.06.013",
+            "ISSN": "0048-7333",
+            "author": [
+                {
+                    "family": "Boschma",
+                    "given": "Ron"
+                },
+                {
+                    "family": "Capone",
+                    "given": "Gianluca"
+                }
+            ],
+            "container-title": "Research Policy",
+            "id": "Boschma2015",
+            "issue": "10",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015,
+                        12
+                    ]
+                ]
+            },
+            "page": "1902-1914",
+            "publisher": "Elsevier BV",
+            "title": "Institutions and diversification: Related versus unrelated diversification in a varieties of capitalism framework",
+            "title-short": "Institutions and diversification",
+            "type": "article-journal",
+            "volume": "44"
+        },
+        {
+            "DOI": "10.52324/001c.8023",
+            "ISSN": "0048-749X",
+            "author": [
+                {
+                    "family": "Chávez",
+                    "given": "Juan Carlos"
+                },
+                {
+                    "family": "Mosqueda",
+                    "given": "Marco T."
+                },
+                {
+                    "family": "Gómez-Zaldívar",
+                    "given": "Manuel"
+                }
+            ],
+            "container-title": "Review of Regional Studies",
+            "id": "Chavez2017",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017,
+                        6
+                    ]
+                ]
+            },
+            "publisher": "Southern Regional Science Association",
+            "title": "Economic complexity and regional growth performance: Evidence from the mexican economy",
+            "title-short": "Economic complexity and regional growth performance",
+            "type": "article-journal",
+            "volume": "47"
+        },
+        {
+            "URL": "https://hdl.handle.net/11362/44721",
+            "author": [
+                {
+                    "family": "Britto",
+                    "given": "Gustavo"
+                },
+                {
+                    "family": "Romero",
+                    "given": "João Prates"
+                },
+                {
+                    "family": "Freitas",
+                    "given": "Elton"
+                },
+                {
+                    "family": "Coelho",
+                    "given": "Clara"
+                }
+            ],
+            "container-title": "CEPAL Review",
+            "id": "britto2019great",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "191-211",
+            "title": "The great divide: Economic complexity and development paths in brazil and the republic of korea",
+            "title-short": "The great divide",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.1016/j.eap.2020.08.004",
+            "ISSN": "0313-5926",
+            "author": [
+                {
+                    "family": "Chu",
+                    "given": "Lan Khanh"
+                },
+                {
+                    "family": "Hoang",
+                    "given": "Dung Phuong"
+                }
+            ],
+            "container-title": "Economic Analysis and Policy",
+            "id": "Chu2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020,
+                        12
+                    ]
+                ]
+            },
+            "page": "44-57",
+            "title": "How does economic complexity influence income inequality? New evidence from international data",
+            "type": "article-journal",
+            "volume": "68"
+        },
+        {
+            "URL": "https://hdl.handle.net/11362/40842",
+            "author": [
+                {
+                    "family": "Correa",
+                    "given": "Felipe"
+                }
+            ],
+            "collection-title": "Serie desarrollo productivo",
+            "id": "correa2016pobreza",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "number": "207",
+            "publisher": "CEPAL",
+            "title": "Pobreza, desigualdad y estructura productiva en ciudades: Evidencia desde chile usando datos de panel",
+            "title-short": "Pobreza, desigualdad y estructura productiva en ciudades",
+            "type": "report"
+        },
+        {
+            "DOI": "10.1016/j.worlddev.2013.05.010",
+            "ISSN": "0305-750X",
+            "author": [
+                {
+                    "family": "Poncet",
+                    "given": "Sandra"
+                },
+                {
+                    "family": "Starosta de Waldemar",
+                    "given": "Felipe"
+                }
+            ],
+            "container-title": "World Development",
+            "id": "Poncet2013",
+            "issued": {
+                "date-parts": [
+                    [
+                        2013,
+                        11
+                    ]
+                ]
+            },
+            "page": "104-118",
+            "publisher": "Elsevier BV",
+            "title": "Export upgrading and growth: The prerequisite of domestic embeddedness",
+            "title-short": "Export upgrading and growth",
+            "type": "article-journal",
+            "volume": "51"
+        },
+        {
+            "DOI": "10.1080/02692171.2020.1853684",
+            "ISSN": "1465-3486",
+            "author": [
+                {
+                    "family": "Dávila Fernández",
+                    "given": "Marwil J."
+                },
+                {
+                    "family": "Punzo",
+                    "given": "Lionello F."
+                }
+            ],
+            "container-title": "International Review of Applied Economics",
+            "id": "DavilaFernandez2020",
+            "issue": "3–4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020,
+                        12
+                    ]
+                ]
+            },
+            "page": "520-539",
+            "publisher": "Informa UK Limited",
+            "title": "Some new insights on financialization and income inequality: Evidence for the US economy, 1947–2013",
+            "title-short": "Some new insights on financialization and income inequality",
+            "type": "article-journal",
+            "volume": "35"
+        },
+        {
+            "DOI": "10.1080/08853908.2018.1535336",
+            "ISSN": "1521-0545",
+            "author": [
+                {
+                    "family": "Fawaz",
+                    "given": "Fadi"
+                },
+                {
+                    "family": "Rahnama-Moghadamm",
+                    "given": "Masha"
+                }
+            ],
+            "container-title": "The International Trade Journal",
+            "id": "Fawaz2018",
+            "issue": "6",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018,
+                        10
+                    ]
+                ]
+            },
+            "page": "542-554",
+            "publisher": "Informa UK Limited",
+            "title": "Spatial dependence of global income inequality: The role of economic complexity",
+            "title-short": "Spatial dependence of global income inequality",
+            "type": "article-journal",
+            "volume": "33"
+        },
+        {
+            "DOI": "10.1016/j.strueco.2011.08.003",
+            "ISSN": "0954-349X",
+            "author": [
+                {
+                    "family": "Felipe",
+                    "given": "Jesus"
+                },
+                {
+                    "family": "Kumar",
+                    "given": "Utsav"
+                },
+                {
+                    "family": "Abdon",
+                    "given": "Arnelyn"
+                },
+                {
+                    "family": "Bacate",
+                    "given": "Marife"
+                }
+            ],
+            "container-title": "Structural Change and Economic Dynamics",
+            "id": "Felipe2012",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2012,
+                        3
+                    ]
+                ]
+            },
+            "page": "36-68",
+            "publisher": "Elsevier BV",
+            "title": "Product complexity and economic development",
+            "type": "article-journal",
+            "volume": "23"
+        },
+        {
+            "DOI": "10.1590/0104-530x3925-18",
+            "ISSN": "0104-530X",
+            "author": [
+                {
+                    "family": "Ferraz",
+                    "given": "Diogo"
+                },
+                {
+                    "family": "Moralles",
+                    "given": "Herick Fernando"
+                },
+                {
+                    "family": "Campoli",
+                    "given": "Jessica Suárez"
+                },
+                {
+                    "dropping-particle": "de",
+                    "family": "Oliveira",
+                    "given": "Fabíola Cristina Ribeiro"
+                },
+                {
+                    "family": "Rebelatto",
+                    "given": "Daisy Aparecida do Nascimento"
+                }
+            ],
+            "container-title": "Gestão Produção",
+            "id": "Ferraz2018",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018,
+                        6
+                    ]
+                ]
+            },
+            "page": "839-853",
+            "title": "Economic complexity and human development: DEA performance measurement in asia and latin america",
+            "title-short": "Economic complexity and human development",
+            "type": "article-journal",
+            "volume": "25"
+        },
+        {
+            "DOI": "10.1080/00343404.2021.1884215",
+            "ISSN": "1360-0591",
+            "author": [
+                {
+                    "family": "Fritz",
+                    "given": "Benedikt S. L."
+                },
+                {
+                    "family": "Manduca",
+                    "given": "Robert A."
+                }
+            ],
+            "container-title": "Regional Studies",
+            "id": "Fritz2021",
+            "issue": "7",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        3
+                    ]
+                ]
+            },
+            "page": "1299-1310",
+            "publisher": "Informa UK Limited",
+            "title": "The economic complexity of US metropolitan areas",
+            "type": "article-journal",
+            "volume": "55"
+        },
+        {
+            "DOI": "10.1016/j.strueco.2024.05.012",
+            "ISSN": "0954-349X",
+            "author": [
+                {
+                    "family": "Ganguly",
+                    "given": "Arpan"
+                },
+                {
+                    "family": "Spinola",
+                    "given": "Danilo"
+                }
+            ],
+            "container-title": "Structural Change and Economic Dynamics",
+            "id": "Ganguly2024",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024,
+                        9
+                    ]
+                ]
+            },
+            "page": "634-649",
+            "publisher": "Elsevier BV",
+            "title": "Growth and distribution regimes under global value chains: Diversification, integration, and uneven development",
+            "title-short": "Growth and distribution regimes under global value chains",
+            "type": "article-journal",
+            "volume": "70"
+        },
+        {
+            "DOI": "10.2139/ssrn.4870771",
+            "author": [
+                {
+                    "family": "Gbolonyo",
+                    "given": "Emmanuel"
+                },
+                {
+                    "family": "Ofori",
+                    "given": "Isaac K."
+                },
+                {
+                    "family": "Ojong",
+                    "given": "Nathanael"
+                }
+            ],
+            "id": "Gbolonyo2024",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "publisher": "Elsevier BV",
+            "title": "Does economic complexity promote inclusive green growth?",
+            "type": "article-journal"
+        },
+        {
+            "author": [
+                {
+                    "family": "Hartmann",
+                    "given": "Dominik"
+                },
+                {
+                    "family": "Jara-Figueroa",
+                    "given": "Cristian"
+                },
+                {
+                    "family": "Kaltenberg",
+                    "given": "Mary"
+                },
+                {
+                    "family": "Gala",
+                    "given": "Paulo"
+                }
+            ],
+            "collection-title": "Hohenheim discussion papers in business, economics and social sciences",
+            "id": "Hartmann2019mapping",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "number": "06-2019",
+            "publisher": "University of Hohenheim, Faculty of Business, Economics; Social Sciences",
+            "title": "Mapping stratification: The industry-occupation space reveals the network structure of inequality",
+            "title-short": "Mapping stratification",
+            "type": "report"
+        },
+        {
+            "DOI": "10.1007/s42973-019-00026-7",
+            "ISSN": "1468-5876",
+            "author": [
+                {
+                    "family": "Lee",
+                    "given": "Kang-Kook"
+                },
+                {
+                    "family": "Vu",
+                    "given": "Trung V."
+                }
+            ],
+            "container-title": "The Japanese Economic Review",
+            "id": "Lee2019",
+            "issue": "4",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019,
+                        12
+                    ]
+                ]
+            },
+            "page": "695-718",
+            "publisher": "Springer Science; Business Media LLC",
+            "title": "Economic complexity, human capital and income inequality: A cross-country analysis",
+            "title-short": "Economic complexity, human capital and income inequality",
+            "type": "article-journal",
+            "volume": "71"
+        },
+        {
+            "DOI": "10.3390/su13021006",
+            "ISSN": "2071-1050",
+            "author": [
+                {
+                    "family": "Bandeira Morais",
+                    "given": "Margarida"
+                },
+                {
+                    "family": "Swart",
+                    "given": "Julia"
+                },
+                {
+                    "family": "Jordaan",
+                    "given": "Jacob Arie"
+                }
+            ],
+            "container-title": "Sustainability",
+            "id": "BandeiraMorais2021",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        1
+                    ]
+                ]
+            },
+            "title": "Economic complexity and inequality: Does regional productive structure affect income inequality in brazilian states?",
+            "title-short": "Economic complexity and inequality",
+            "type": "article-journal",
+            "volume": "13"
+        },
+        {
+            "DOI": "10.1007/s43546-023-00459-8",
+            "ISSN": "2662-9399",
+            "author": [
+                {
+                    "family": "Njangang",
+                    "given": "Henri"
+                },
+                {
+                    "family": "Nvuh-Njoya",
+                    "given": "Youssouf"
+                }
+            ],
+            "container-title": "SN Business &amp; Economics",
+            "id": "Njangang2023",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023,
+                        2
+                    ]
+                ]
+            },
+            "publisher": "Springer Science; Business Media LLC",
+            "title": "Unravelling the link between democracy and economic complexity: Fresh evidence from the varieties of democracy data",
+            "title-short": "Unravelling the link between democracy and economic complexity",
+            "type": "article-journal",
+            "volume": "3"
+        },
+        {
+            "DOI": "10.1016/j.worlddev.2022.106030",
+            "author": [
+                {
+                    "family": "Paglialunga",
+                    "given": "Elena"
+                },
+                {
+                    "family": "Coveri",
+                    "given": "Andrea"
+                },
+                {
+                    "family": "Zanfei",
+                    "given": "Antonello"
+                }
+            ],
+            "container-title": "World Development",
+            "id": "Paglialunga2022",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022,
+                        11
+                    ]
+                ]
+            },
+            "page": "106030",
+            "title": "Climate change and within-country inequality: New evidence from a global perspective",
+            "title-short": "Climate change and within-country inequality",
+            "type": "article-journal",
+            "volume": "159"
+        },
+        {
+            "author": [
+                {
+                    "family": "Raihan",
+                    "given": "Selim"
+                }
+            ],
+            "container-title": "Jurnal Ekonomi Malaysia",
+            "id": "raihan2022what",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "page": "45-64",
+            "publisher": "Faculty of Economics; Business, Universiti Kebangsaan Malaysia",
+            "title": "What does data on functional income distribution tell us about trends in and correlates of income inequality in the asia-pacific?",
+            "type": "article-journal",
+            "volume": "56"
+        },
+        {
+            "DOI": "10.1016/j.worlddev.2020.105317",
+            "ISSN": "0305-750X",
+            "author": [
+                {
+                    "family": "Romero",
+                    "given": "João P."
+                },
+                {
+                    "family": "Gramkow",
+                    "given": "Camila"
+                }
+            ],
+            "container-title": "World Development",
+            "id": "Romero2021",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        3
+                    ]
+                ]
+            },
+            "page": "105317",
+            "publisher": "Elsevier BV",
+            "title": "Economic complexity and greenhouse gas emissions",
+            "type": "article-journal",
+            "volume": "139"
+        },
+        {
+            "DOI": "10.1371/journal.pone.0182774",
+            "ISSN": "1932-6203",
+            "author": [
+                {
+                    "family": "Sbardella",
+                    "given": "Angelica"
+                },
+                {
+                    "family": "Pugliese",
+                    "given": "Emanuele"
+                },
+                {
+                    "family": "Pietronero",
+                    "given": "Luciano"
+                }
+            ],
+            "container-title": "PLOS ONE",
+            "editor": [
+                {
+                    "family": "Preis",
+                    "given": "Tobias"
+                }
+            ],
+            "id": "Sbardella2017",
+            "issue": "9",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017,
+                        9
+                    ]
+                ]
+            },
+            "page": "e0182774",
+            "publisher": "Public Library of Science",
+            "title": "Economic development and wage inequality: A complex system analysis",
+            "title-short": "Economic development and wage inequality",
+            "type": "article-journal",
+            "volume": "12"
+        },
+        {
+            "DOI": "10.1038/s43247-023-00770-0",
+            "ISSN": "2662-4435",
+            "author": [
+                {
+                    "family": "Stojkoski",
+                    "given": "Viktor"
+                },
+                {
+                    "family": "Koch",
+                    "given": "Philipp"
+                },
+                {
+                    "family": "Hidalgo",
+                    "given": "César A."
+                }
+            ],
+            "container-title": "Communications Earth & Environment",
+            "id": "Stojkoski2023",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023,
+                        4
+                    ]
+                ]
+            },
+            "title": "Multidimensional economic complexity and inclusive green growth",
+            "type": "article-journal",
+            "volume": "4"
+        },
+        {
+            "URL": "https://mpra.ub.uni-muenchen.de/77837/",
+            "author": [
+                {
+                    "family": "Stojkoski",
+                    "given": "Viktor"
+                },
+                {
+                    "family": "Kocarev",
+                    "given": "Ljupco"
+                }
+            ],
+            "genre": "MPRA Paper",
+            "id": "stojkoski2017relationship",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017
+                    ]
+                ]
+            },
+            "note": "Revised 2017",
+            "number": "77837",
+            "publisher": "University Library of Munich, Germany",
+            "title": "The relationship between growth and economic complexity: Evidence from southeastern and central europe",
+            "title-short": "The relationship between growth and economic complexity",
+            "type": "report"
+        },
+        {
+            "DOI": "10.1016/j.apgeog.2020.102150",
+            "ISSN": "0143-6228",
+            "author": [
+                {
+                    "family": "Zhu",
+                    "given": "Shengjun"
+                },
+                {
+                    "family": "Yu",
+                    "given": "Changda"
+                },
+                {
+                    "family": "He",
+                    "given": "Canfei"
+                }
+            ],
+            "container-title": "Applied Geography",
+            "id": "Zhu2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020,
+                        2
+                    ]
+                ]
+            },
+            "page": "102150",
+            "title": "Export structures, income inequality and urban-rural divide in china",
+            "type": "article-journal",
+            "volume": "115"
+        },
+        {
+            "ISBN": "0-87014-054-X",
+            "URL": "http://www.nber.org/books/kuzn53-1",
+            "author": [
+                {
+                    "family": "Kuznets",
+                    "given": "Simon"
+                }
+            ],
+            "editor": [
+                {
+                    "family": "Jenks",
+                    "given": "Elizabeth"
+                }
+            ],
+            "id": "kuznets1953shares",
+            "issued": {
+                "date-parts": [
+                    [
+                        1953
+                    ]
+                ]
+            },
+            "publisher": "National Bureau of Economic Research",
+            "title": "Shares of upper income groups in income and savings",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Atkinson",
+                    "given": "Anthony B."
+                },
+                {
+                    "family": "Harrison",
+                    "given": "Allan James"
+                }
+            ],
+            "id": "atkinson1978distribution",
+            "issued": {
+                "date-parts": [
+                    [
+                        1978
+                    ]
+                ]
+            },
+            "publisher": "Cambridge University Press",
+            "publisher-place": "Cambridge",
+            "title": "Distribution of personal wealth in britain",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Kuznets",
+                    "given": "Simon"
+                }
+            ],
+            "container-title": "The American Economic Review",
+            "id": "kuznets1955economic",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        1955
+                    ]
+                ]
+            },
+            "page": "1-28",
+            "title": "Economic growth and income inequality",
+            "type": "article-journal",
+            "volume": "45"
+        },
+        {
+            "author": [
+                {
+                    "family": "Hartmann",
+                    "given": "Dominik"
+                },
+                {
+                    "family": "Pinheiro",
+                    "given": "Flavio L."
+                }
+            ],
+            "container-title": "Routledge international handbook of complexity economics",
+            "editor": [
+                {
+                    "family": "Chen",
+                    "given": "Ping"
+                },
+                {
+                    "family": "Elsner",
+                    "given": "Wolfram"
+                },
+                {
+                    "family": "Pyka",
+                    "given": "Andreas"
+                }
+            ],
+            "id": "hartmann2025economic",
+            "issued": {
+                "date-parts": [
+                    [
+                        2025
+                    ]
+                ]
+            },
+            "publisher": "Routledge",
+            "publisher-place": "London",
+            "title": "Economic complexity and inequality at the national and regional level",
+            "type": "chapter"
+        },
+        {
+            "DOI": "10.1016/j.worlddev.2016.12.020",
+            "ISSN": "0305-750X",
+            "author": [
+                {
+                    "family": "Hartmann",
+                    "given": "Dominik"
+                },
+                {
+                    "family": "Guevara",
+                    "given": "Miguel R."
+                },
+                {
+                    "family": "Jara-Figueroa",
+                    "given": "Cristian"
+                },
+                {
+                    "family": "Aristarán",
+                    "given": "Manuel"
+                },
+                {
+                    "family": "Hidalgo",
+                    "given": "César A."
+                }
+            ],
+            "container-title": "World Development",
+            "id": "Hartmann2017",
+            "issued": {
+                "date-parts": [
+                    [
+                        2017,
+                        5
+                    ]
+                ]
+            },
+            "page": "75-93",
+            "publisher": "Elsevier BV",
+            "title": "Linking economic complexity, institutions, and income inequality",
+            "type": "article-journal",
+            "volume": "93"
+        },
+        {
+            "DOI": "10.1073/pnas.0900943106",
+            "ISSN": "1091-6490",
+            "author": [
+                {
+                    "family": "Hidalgo",
+                    "given": "César A."
+                },
+                {
+                    "family": "Hausmann",
+                    "given": "Ricardo"
+                }
+            ],
+            "container-title": "Proceedings of the National Academy of Sciences",
+            "id": "Hidalgo2009",
+            "issue": "26",
+            "issued": {
+                "date-parts": [
+                    [
+                        2009,
+                        6
+                    ]
+                ]
+            },
+            "page": "10570-10575",
+            "publisher": "Proceedings of the National Academy of Sciences",
+            "title": "The building blocks of economic complexity",
+            "type": "article-journal",
+            "volume": "106"
+        },
+        {
+            "DOI": "10.1126/science.1144581",
+            "ISSN": "1095-9203",
+            "author": [
+                {
+                    "family": "Hidalgo",
+                    "given": "César A."
+                },
+                {
+                    "family": "Klinger",
+                    "given": "B."
+                },
+                {
+                    "family": "Barabási",
+                    "given": "A.-L."
+                },
+                {
+                    "family": "Hausmann",
+                    "given": "R."
+                }
+            ],
+            "container-title": "Science",
+            "id": "Hidalgo2007",
+            "issue": "5837",
+            "issued": {
+                "date-parts": [
+                    [
+                        2007,
+                        7
+                    ]
+                ]
+            },
+            "page": "482-487",
+            "publisher": "American Association for the Advancement of Science",
+            "title": "The product space conditions the development of nations",
+            "type": "article-journal",
+            "volume": "317"
+        },
+        {
+            "DOI": "10.1016/j.eap.2024.09.014",
+            "ISSN": "0313-5926",
+            "author": [
+                {
+                    "family": "Amarante",
+                    "given": "Verónica"
+                },
+                {
+                    "family": "Lanzilotta",
+                    "given": "Bibiana"
+                },
+                {
+                    "family": "Torres-Pérez",
+                    "given": "Joaquín"
+                }
+            ],
+            "container-title": "Economic Analysis and Policy",
+            "id": "Amarante2024",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024,
+                        12
+                    ]
+                ]
+            },
+            "page": "628-645",
+            "title": "Income inequality and complexity of the productive structure: New evidence at the world level",
+            "title-short": "Income inequality and complexity of the productive structure",
+            "type": "article-journal",
+            "volume": "84"
+        },
+        {
+            "DOI": "10.1016/j.respol.2023.104863",
+            "ISSN": "0048-7333",
+            "author": [
+                {
+                    "family": "Hidalgo",
+                    "given": "César A."
+                }
+            ],
+            "container-title": "Research Policy",
+            "id": "Hidalgo2023",
+            "issue": "9",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023,
+                        11
+                    ]
+                ]
+            },
+            "page": "104863",
+            "publisher": "Elsevier BV",
+            "title": "The policy implications of economic complexity",
+            "type": "article-journal",
+            "volume": "52"
+        },
+        {
+            "DOI": "10.3390/su13031265",
+            "ISSN": "2071-1050",
+            "author": [
+                {
+                    "family": "Ferraz",
+                    "given": "Diogo"
+                },
+                {
+                    "family": "Falguera",
+                    "given": "Fernanda P. S."
+                },
+                {
+                    "family": "Mariano",
+                    "given": "Enzo B."
+                },
+                {
+                    "family": "Hartmann",
+                    "given": "Dominik"
+                }
+            ],
+            "container-title": "Sustainability",
+            "id": "Ferraz2021",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        1
+                    ]
+                ]
+            },
+            "page": "1265",
+            "publisher": "MDPI AG",
+            "title": "Linking economic complexity, diversification, and industrial policy with sustainable development: A structured literature review",
+            "title-short": "Linking economic complexity, diversification, and industrial policy with sustainable development",
+            "type": "article-journal",
+            "volume": "13"
+        },
+        {
+            "DOI": "10.1016/j.apgeog.2022.102646",
+            "ISSN": "0143-6228",
+            "author": [
+                {
+                    "family": "Marco",
+                    "given": "Rocio"
+                },
+                {
+                    "family": "Llano",
+                    "given": "Carlos"
+                },
+                {
+                    "family": "Perez-Balsalobre",
+                    "given": "Santiago"
+                }
+            ],
+            "container-title": "Applied Geography",
+            "id": "Marco2022",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022,
+                        2
+                    ]
+                ]
+            },
+            "page": "102646",
+            "publisher": "Elsevier BV",
+            "title": "Economic complexity, environmental quality and income equality: A new trilemma for regions?",
+            "title-short": "Economic complexity, environmental quality and income equality",
+            "type": "article-journal",
+            "volume": "139"
+        },
+        {
+            "DOI": "10.1257/jep.14.3.217",
+            "ISSN": "0895-3309",
+            "author": [
+                {
+                    "family": "Sokoloff",
+                    "given": "Kenneth L"
+                },
+                {
+                    "family": "Engerman",
+                    "given": "Stanley L"
+                }
+            ],
+            "container-title": "Journal of Economic Perspectives",
+            "id": "Sokoloff2000",
+            "issue": "3",
+            "issued": {
+                "date-parts": [
+                    [
+                        2000,
+                        8
+                    ]
+                ]
+            },
+            "page": "217-232",
+            "publisher": "American Economic Association",
+            "title": "History lessons: Institutions, factor endowments, and paths of development in the new world",
+            "title-short": "History lessons",
+            "type": "article-journal",
+            "volume": "14"
+        },
+        {
+            "DOI": "10.1093/wbro/11.2.151",
+            "ISSN": "1564-6971",
+            "author": [
+                {
+                    "family": "Stiglitz",
+                    "given": "J. E."
+                }
+            ],
+            "container-title": "The World Bank Research Observer",
+            "id": "Stiglitz1996",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        1996
+                    ]
+                ]
+            },
+            "page": "151-177",
+            "publisher": "Oxford University Press",
+            "title": "Some lessons from the east asian miracle",
+            "type": "article-journal",
+            "volume": "11"
+        },
+        {
+            "author": [
+                {
+                    "family": "Fajnzylber",
+                    "given": "Fernando"
+                }
+            ],
+            "collection-number": "60",
+            "collection-title": "Cuadernos de la CEPAL",
+            "id": "fajnzylber1990industrializacion",
+            "issued": {
+                "date-parts": [
+                    [
+                        1990
+                    ]
+                ]
+            },
+            "publisher": "CEPAL",
+            "publisher-place": "Santiago de Chile",
+            "title": "Industrialización en américa latina: De la \"caja negra\" al \"casillero vacío\": Comparación de patrones contemporáneos de industrialización",
+            "title-short": "Industrialización en américa latina",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Fajnzylber",
+                    "given": "Fernando"
+                }
+            ],
+            "collection-title": "Bibliotecas universitarias: economía",
+            "id": "fajnzylber1983industrializacion",
+            "issued": {
+                "date-parts": [
+                    [
+                        1983
+                    ]
+                ]
+            },
+            "publisher": "Editorial Nueva Imagen",
+            "publisher-place": "Buenos Aires",
+            "title": "La industrialización trunca de américa latina",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Furtado",
+                    "given": "Celso"
+                }
+            ],
+            "id": "furtado1961desenvolvimento",
+            "issued": {
+                "date-parts": [
+                    [
+                        1961
+                    ]
+                ]
+            },
+            "publisher": "Fundo de Cultura",
+            "publisher-place": "Rio de Janeiro",
+            "title": "Desenvolvimento e subdesenvolvimento",
+            "type": "book"
+        },
+        {
+            "DOI": "10.1162/00335530360535135",
+            "ISSN": "1531-4650",
+            "author": [
+                {
+                    "family": "Piketty",
+                    "given": "T."
+                },
+                {
+                    "family": "Saez",
+                    "given": "E."
+                }
+            ],
+            "container-title": "The Quarterly Journal of Economics",
+            "id": "Piketty2003",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2003,
+                        2
+                    ]
+                ]
+            },
+            "page": "1-41",
+            "publisher": "Oxford University Press",
+            "title": "Income inequality in the united states, 1913-1998",
+            "type": "article-journal",
+            "volume": "118"
+        },
+        {
+            "DOI": "10.1257/jel.49.1.3",
+            "ISSN": "0022-0515",
+            "author": [
+                {
+                    "family": "Atkinson",
+                    "given": "Anthony B"
+                },
+                {
+                    "family": "Piketty",
+                    "given": "Thomas"
+                },
+                {
+                    "family": "Saez",
+                    "given": "Emmanuel"
+                }
+            ],
+            "container-title": "Journal of Economic Literature",
+            "id": "Atkinson2011",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011,
+                        3
+                    ]
+                ]
+            },
+            "page": "3-71",
+            "publisher": "American Economic Association",
+            "title": "Top incomes in the long run of history",
+            "type": "article-journal",
+            "volume": "49"
+        },
+        {
+            "DOI": "10.1111/j.1467-7660.2011.01694.x",
+            "ISSN": "1467-7660",
+            "author": [
+                {
+                    "family": "Palma",
+                    "given": "José Gabriel"
+                }
+            ],
+            "container-title": "Development and Change",
+            "id": "Palma2011",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011,
+                        1
+                    ]
+                ]
+            },
+            "page": "87-153",
+            "publisher": "Wiley",
+            "title": "Homogeneous middles vs. Heterogeneous tails, and the end of the “inverted-u”: It’s all about the share of the rich",
+            "title-short": "Homogeneous middles vs. Heterogeneous tails, and the end of the “inverted-u”",
+            "type": "article-journal",
+            "volume": "42"
+        },
+        {
+            "DOI": "10.2307/2226317",
+            "ISSN": "0013-0133",
+            "author": [
+                {
+                    "family": "Rosenstein-Rodan",
+                    "given": "P. N."
+                }
+            ],
+            "container-title": "The Economic Journal",
+            "id": "RosensteinRodan1943",
+            "issue": "210/211",
+            "issued": {
+                "date-parts": [
+                    [
+                        1943,
+                        6
+                    ]
+                ]
+            },
+            "page": "202",
+            "publisher": "Oxford University Press",
+            "title": "Problems of industrialisation of eastern and south-eastern europe",
+            "type": "article-journal",
+            "volume": "53"
+        },
+        {
+            "author": [
+                {
+                    "family": "Prebisch",
+                    "given": "Raúl"
+                }
+            ],
+            "container-title": "O manifesto latino-americano e outros ensaios",
+            "id": "prebisch1949",
+            "issued": {
+                "date-parts": [
+                    [
+                        1949
+                    ]
+                ]
+            },
+            "page": "95-151",
+            "publisher": "Contraponto; Centro Internacional Celso Furtado",
+            "publisher-place": "Rio de Janeiro",
+            "title": "O desenvolvimento econômico da américa latina e alguns de seus principais problemas",
+            "type": "chapter"
+        },
+        {
+            "author": [
+                {
+                    "family": "Hirschman",
+                    "given": "Albert O."
+                }
+            ],
+            "id": "hirschman1958",
+            "issued": {
+                "date-parts": [
+                    [
+                        1958
+                    ]
+                ]
+            },
+            "publisher": "Yale University Press",
+            "publisher-place": "New Haven",
+            "title": "The strategy of economic development",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Furtado",
+                    "given": "Celso"
+                }
+            ],
+            "id": "furtado1961",
+            "issued": {
+                "date-parts": [
+                    [
+                        1961
+                    ]
+                ]
+            },
+            "publisher": "Fundo de Cultura",
+            "publisher-place": "Rio de Janeiro",
+            "title": "Desenvolvimento e subdesenvolvimento",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Simões",
+                    "given": "Alexander J. G."
+                },
+                {
+                    "family": "Hidalgo",
+                    "given": "Cesar A."
+                }
+            ],
+            "container-title": "Workshops at the twenty-fifth AAAI conference on artificial intelligence 2011",
+            "id": "simoes2011",
+            "issued": {
+                "date-parts": [
+                    [
+                        2011
+                    ]
+                ]
+            },
+            "title": "The economic complexity observatory: An analytical tool for understanding the dynamics of economic development",
+            "title-short": "The economic complexity observatory",
+            "type": "paper-conference"
+        },
+        {
+            "DOI": "10.1007/s10887-006-9009-4",
+            "ISSN": "1573-7020",
+            "author": [
+                {
+                    "family": "Hausmann",
+                    "given": "Ricardo"
+                },
+                {
+                    "family": "Hwang",
+                    "given": "Jason"
+                },
+                {
+                    "family": "Rodrik",
+                    "given": "Dani"
+                }
+            ],
+            "container-title": "Journal of Economic Growth",
+            "id": "Hausmann2006",
+            "issue": "1",
+            "issued": {
+                "date-parts": [
+                    [
+                        2006,
+                        12
+                    ]
+                ]
+            },
+            "page": "1-25",
+            "publisher": "Springer Science; Business Media LLC",
+            "title": "What you export matters",
+            "type": "article-journal",
+            "volume": "12"
+        },
+        {
+            "id": "2022",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022
+                    ]
+                ]
+            },
+            "publisher": "Harvard University Press",
+            "title": "World inequality report",
+            "type": "book"
+        },
+        {
+            "DOI": "10.1016/j.worlddev.2024.106737",
+            "ISSN": "0305-750X",
+            "author": [
+                {
+                    "family": "Rosa",
+                    "given": "Mauricio"
+                },
+                {
+                    "family": "Flores",
+                    "given": "Ignacio"
+                },
+                {
+                    "family": "Morgan",
+                    "given": "Marc"
+                }
+            ],
+            "container-title": "World Development",
+            "id": "DeRosa2024",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "page": "106737",
+            "publisher": "Elsevier BV",
+            "title": "More unequal or not as rich? Revisiting the latin american exception",
+            "type": "article-journal",
+            "volume": "184"
+        },
+        {
+            "ISBN": "9780674269927",
+            "author": [
+                {
+                    "family": "Gethin",
+                    "given": "Amory"
+                }
+            ],
+            "editor": [
+                {
+                    "family": "Martínez-Toledano",
+                    "given": "Clara"
+                },
+                {
+                    "family": "Piketty",
+                    "given": "Thomas"
+                }
+            ],
+            "id": "Gethin2021",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "number-of-pages": "1656",
+            "publisher": "Harvard University Press",
+            "publisher-place": "Cambridge, Massachusetts",
+            "title": "Political cleavages and social inequalities: A study of fifty democracies, 1948-2020",
+            "title-short": "Political cleavages and social inequalities",
+            "type": "book"
+        },
+        {
+            "editor": [
+                {
+                    "family": "Gethin",
+                    "given": "Amory"
+                },
+                {
+                    "family": "Martínez-Toledano",
+                    "given": "Clara"
+                },
+                {
+                    "family": "Piketty",
+                    "given": "Thomas"
+                }
+            ],
+            "id": "Gethin2021",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021
+                    ]
+                ]
+            },
+            "publisher": "Harvard University Press",
+            "publisher-place": "Cambridge, MA",
+            "title": "Political cleavages and social inequalities: A study of fifty democracies, 1948–2020",
+            "title-short": "Political cleavages and social inequalities",
+            "type": "book"
+        },
+        {
+            "ISBN": "9780393531732",
+            "author": [
+                {
+                    "family": "Saez",
+                    "given": "Emmanuel"
+                }
+            ],
+            "editor": [
+                {
+                    "family": "Zucman",
+                    "given": "Gabriel"
+                }
+            ],
+            "id": "Saez2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "number-of-pages": "262",
+            "publisher": "W. W. Norton & Company",
+            "publisher-place": "New York, NY",
+            "title": "The triumph of injustice: How the rich dodge taxes and how to make them pay",
+            "title-short": "The triumph of injustice",
+            "type": "book"
+        },
+        {
+            "DOI": "10.1038/s41893-022-00955-z",
+            "ISSN": "2398-9629",
+            "author": [
+                {
+                    "family": "Chancel",
+                    "given": "Lucas"
+                }
+            ],
+            "container-title": "Nature Sustainability",
+            "id": "Chancel2022",
+            "issue": "11",
+            "issued": {
+                "date-parts": [
+                    [
+                        2022,
+                        9
+                    ]
+                ]
+            },
+            "page": "931-938",
+            "publisher": "Springer Science; Business Media LLC",
+            "title": "Global carbon inequality over 1990–2019",
+            "type": "article-journal",
+            "volume": "5"
+        },
+        {
+            "DOI": "10.7910/DVN/H8SFD2",
+            "URL": "https://doi.org/10.7910/DVN/H8SFD2",
+            "author": [
+                {
+                    "literal": "Harvard Growth Lab"
+                }
+            ],
+            "id": "SITC-2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "publisher": "Harvard Dataverse",
+            "title": "International trade data (SITC, Rev. 2)",
+            "type": "dataset",
+            "version": "V11"
+        }
+    ],
+    "project_biblios": []
+}
