@@ -331,9 +331,10 @@ Calculei estatísticas descritivas (médias, desvios-padrão) para validar se os
 
 ## Conceitos e técnicas de ciência dos dados aplicadas
 
-Nesta seção descrevo brevemente os conceitos e técnicas da disciplina *Ciência dos Dados Avançada* empregados durante a exploração e limpeza dos dados do ***Projeto***. Em poucas palavras, fiz uso intensivo de técnicas como programação funcional, paralelização e manipulação avançada de dados, estruturação e visualização de dados. Cada conceito e técnica é acompanhada de exemplos práticos de código R.
+Nesta seção descrevo brevemente os conceitos e técnicas da disciplina *Ciência dos Dados Avançada* empregados durante a exploração e limpeza dos dados do ***Projeto***. Em poucas palavras, fiz uso intensivo de programação funcional, paralelização, manipulação avançada de dados, estruturação e visualização de dados. A seguir, cada conceito e técnica é acompanhada de exemplos práticos de código R.
 
-- **Programação Funcional e Criação de Funções:** Encapsulei operações de leitura e transformação em funções específicas para aumentar a reusabilidade e facilitar a manutenção. Utilizei programação funcional com a função personalizada `process_wid_file()`que lê cada arquivo listado por meio de `list.files()` e seleciona e transforma as colunas necessárias. Nesse processo, apliquei conceitos vistos em aula, como orientação a objetos, manipulação avançada de estruturas de dados (especialmente *data frames*), e utilizei funções do pacote `dplyr`, tais como `mutate`, `group_by`.
+- **Programação Funcional e Criação de Funções:** Desenvolvi funções especializadas para operações-chave como `process_wid_file()`  que automatiza a leitura e transformação de dados a partir de múltiplos arquivos `list.files()`. Essa abordagem funcional, combinada com operações do `dplyr` (como `mutate`, `group_by`), permitiu: reusabilidade, pelo tratamento uniforme de diferentes fontes de dados; manutenção simplificada, pelo isolamento de lógicas complexas em unidades modulares; e eficiência, pela aplicação vetorizada de transformações em *data frames*.
+
 
 ```{r echo=TRUE, eval=FALSE}
 # Uso de programação funcional para ler múltiplos arquivos (funções, loops, paralelismo)
@@ -354,7 +355,7 @@ process_wid_file <- function(file_path) {
 }
 ```
 
--   **Paralelização:** Emprego de `future_map_dfr()` (pacote `**furrr**`) para processamento paralelo, tornando a execução mais eficiente.
+-   **Paralelização:** Empreguei a função `future_map_dfr()`, do pacote `furrr`, para processamento paralelo, tornando a execução mais eficiente.
 
 ```{r echo=TRUE, eval=FALSE}
 # Paralelizando a leitura de arquivos com 'future_map_dfr()'
@@ -364,7 +365,7 @@ wid_files <- list.files(path = "data/wid_all_data", pattern = "\\.csv$", full.na
 wid_full <- furrr::future_map_dfr(wid_files, process_wid_file)
 ```
 
-- **Manipulações Avançadas com `dplyr`:** Usei intensivamente verbos como `select`, `filter`, `mutate`, `group_by` e `summarise`, mostrando na prática a aplicação de técnicas vistas no tópico de ***Principais Bibliotecas de Ciência de Dados***.
+- **Manipulações Avançadas com `dplyr`:** Usei intensivamente verbos como `select`, `filter`, `mutate`, `group_by` e `summarise`. Isso foi objeto do tópico de ***Principais Bibliotecas de Ciência de Dados*** do curso.
 
 ```{r echo=TRUE, eval=FALSE}
 # Uso de funções do dplyr para limpeza
@@ -375,7 +376,7 @@ wid_filtered <- wid_full %>%
                 period_flag = ifelse(year >= 1980, TRUE, FALSE))
 ```
 
-- **Estruturação e Limpeza dos Dados:** Transformei e organizei os dados, convertendo variáveis textuais para numéricas, criando novas variáveis úteis (como `decade` e `period_flag`) e removendo dados faltantes (*NAs*) e valores extremos (*outliers*), alinhando-me com os ***Conceitos de Limpeza e Organização de Dados*** estudados.
+- **Estruturação e Limpeza dos Dados:** Transformei e organizei os dados, convertendo variáveis textuais para numéricas, criando novas variáveis úteis como `decade` e `period_flag`. Também removi dados faltantes (*NAs*) e valores extremos (*outliers*), o que está de acordo com os ***Conceitos de Limpeza e Organização de Dados***.
 
 ```{r echo=TRUE, eval=FALSE}
 # Sumarizar e agrupar observações por país e ano
@@ -392,7 +393,7 @@ wid_summary <- wid_filtered %>%
 head(wid_summary)
 ```
 
-- **Visualização e Ferramentas Estatísticas:** Finalmente, utilizei técnicas estatísticas, como regressões lineares (`lm()`), e gerei visualizações com `ggplot2`. Para garantir clareza e qualidade gráfica, os gráficos foram exportados com o pacote `tikz`, permitindo uma representação vetorial precisa, alinhada aos princípios de comunicação visual eficaz discutidos durante o curso.
+- **Visualização e Ferramentas Estatísticas:** Finalmente, utilizei técnicas estatísticas, como regressões lineares (`lm()`), e gerei visualizações com `ggplot2`. Para garantir clareza e qualidade, os gráficos foram exportados com o pacote `tikz`, o que permitiu uma representação vetorial precisa e alinhada com alguns dos princípios de comunicação visual eficaz discutidos durante o curso.
 
 ```{r echo=TRUE, eval=FALSE}
 # Gera e exporta gráfico de correlação ECI-share de renda usando ggplot2 + tikz
@@ -443,7 +444,7 @@ print(plot_final)
 dev.off()
 ```
 
-- Uma ilustração disso é a [Figura 7](#correlacao_eci_sdiincj992), que mostra como a associação entre ECI e desigualidade torna-se regressiva entre os 10% mais rico (isto é, seus efeitos diminuem à medida que nos aproximamos das faixas mais elevadas da distribuição).
+- Uma ilustração disso é a [Figura 7](#correlacao_eci_sdiincj992), que mostra como a associação entre ECI e desigualidade se torna regressiva entre os 10% mais ricos -- isto é, os efeitos associados ao ECI diminuem à medida que nos aproximamos das faixas mais elevadas da distribuição.
 
 ::: {style="height: 10px;"}
 :::
@@ -466,19 +467,19 @@ dev.off()
 
 # "Cozinha de Pesquisa": limitações e aprendizado {#sec-cozinha}
 
-A estratégia (um tanto óbvia, é verdade) de dividir o processo em três etapas — conhecer a base, limpá-la e estruturá-la, e só depois partir para as análises — funcionou razoavelmente bem. Mas, como era de se esperar, houve muito **vai e volta**. Um exemplo: só depois de já estar rodando as análises percebi que, na minha base estruturada, havia deixado de fora variáveis importantes. Resultado? Tive que voltar para a fase de limpeza e refazer parte do pipeline. Na verdade, ao longo do ***Projeto***, o principal desafio foi de longe limpar e integrar as bases da WID e do Atlas.
+A primeira lição foi sobre o desenho (ou "workflow") do ***Projeto***. Cabe aqui distinguir "pipeline" de "workflow." A "pipeline" é "aquilo que faz um computador, como por exemplo quando um pedaço de software roda de maneira automática uma série de scripts Bash ou R. Já  "workflow" se refere ao que o pesquisador faz para avançar em questões científicas, tais como desenvolver hipóteses, tratar dados, escrever código e interpretar resultados [ambas citações de @Stoudt2021].
 
-A documentação do Atlas e do WID -- especialmente seu dicionário de variáveis [@wid_codes_dictionary] -- é relativamente clara. Porém, os nomes das variáveis da WID, em particular, podem não parecer intuitivos à primeira vista. Com o tempo, me acostumei à estrutura dos códigos, mas há espaço para melhorias para torná-los mais acessíveis desde o início.
+A estratégia inicial (e um tanto óbvia) de dividir o processo em três etapas — conhecer a base, limpá-la e estruturá-la, e então partir para as análises — funcionou razoavelmente bem. Isso apesar do esperado vai e volta constante. Por exemplo, percebi tardiamente que decisões tomadas na fase inicial de limpeza excluíam variáveis importantes para a análise. Resultado: precisei voltar para a etapa de limpeza e refazer parte da "pipeline". De fato, ao longo do ***Projeto***, o principal desafio foi, sem dúvidas, limpar e integrar consistentemente as bases da WID e do STIC 2. Aliás, vale notar que a documentação dessas bases, especialmente o dicionário de variáveis da WID [@wid_codes_dictionary], é relativamente clara. Porém, nomes das variáveis na WID não são imediatamente intuitivos. O que exigiu uma curva um tanto íngreme de adaptação.
 
-Algumas coisas que aprendi ao longo do caminho. Um problema que consumiu tempo foi lidar com **percentis em casas decimais** (99,9%; 99,99% e 99,999%). Com frequência, esses valores eram lidos como `numeric`, o que fazia com que os decimais fossem truncados. Demorei para perceber essa questão até que finalmente tratei os percentis como `character`, evitando a perda de informação.
+Algumas lições técnicas valem o registro. Uma das principais foi o tratamento dos percentis extremos (99.9%, 99.99%, 99.999%). Inicialmente, o R interpretou incorretamente esses valores numéricos, truncando as casas após a vírgula. Só após inconsistências nas análises percebi o erro: valores como 99.9 ou 99.999 eram tratados simplesmente como 99. A solução foi converter os percentis (`numeric`) para texto (`character`) antes do processamento, preservando assim sua precisão original.
 
-Outro ponto curioso — e até irônico — é que a **cobertura da WID é bastante desigual**. Das mais de 57 milhões de observações, os Estados Unidos sozinhos possuem mais de 800 mil, enquanto o Brasil tem cerca de 250 mil e o Vietnã menos de 650. Além disso, a maior parte dos dados está concentrada nos últimos 40 anos, o que inviabilizou iniciar a análise em 1960, como em Hartman et al. Diante disso, optei por trabalhar com observações de 1980 até o final dos anos 2000, focando em variáveis de renda bruta e líquida, além da unidadade de análise "equal-split".[^1]
+Outro ponto curioso, e até irônico, é que a cobertura da *World Inequality Database* é bastante desigual. Das mais de 57 milhões de observações, os Estados Unidos sozinhos possuem mais de 800 mil, enquanto o Brasil tem cerca de 250 mil e o Vietnã menos de 650. Além disso, a maior parte dos dados está concentrada nos últimos 40 anos, o que inviabilizou iniciar a análise em 1960, como em Hartman et al. Diante disso, optei por trabalhar com observações de 1980 até o final dos anos 2000, focando em variáveis de renda bruta e líquida, além da unidadade de análise "equal-split".[^1]
 
 [^1]: A WID contém um total de 57.208.488 observações distribuídas entre 1.793 variáveis, cobrindo o período de 1807 a 2023. A média dos anos com observações na base é 1999, com um desvio padrão de 20 anos. O primeiro quartil (Q25) corresponde ao ano de 1990, a mediana situa-se em 2002 e o terceiro quartil (Q75) em 2012. O número de anos com dados disponíveis por país também varia consideravelmente: o mínimo é 43 anos, enquanto o máximo chega a 214. Em média, cada país possui informações cobrindo 87 anos, com os seguintes quartis: Q25 = 44 anos, Q50 = 74 anos e Q75 = 95 anos.
 
-Também devo dizer que não fiz uso de tudo que a WID oferece. As análises foram feitas com faixas de distribuição mais amplas do que as que a WID oferece (50%, 40% e percentis do 10% mais rico). Mas, como a WID disponibiliza os dados em percentis individuais, eu poderia ter gerado recortes mais detalhados. Tentei fazer isso, mas depois de horas rodando (mesmo com paralelização), o processo ainda não tinha terminado. Como saída possível, testei uma abordagem baseada em decis, que confirmou as tendências esperadas, mas acabou ficando de fora do relatório. A demora no processamento certamente poderia ser otimizada com técnicas mais sofisticadas, que, honestamente, eu ainda não domino.
+Uma segunda lição foi sobre a tensão entre granularidade e viabilidade computacional. Embora a WID permita análises detalhadas em micropercentis, um tal uso se mostrou impraticável dado o cronograma do ***Projeto***. Num teste inicial com apenas 10% dos dados, o processamento levou várias horas, mesmo utilizando 7 dos 8 núcleos da CPU. Optei então por um exercício simplificado, agregando os dados da WID em decis. Embora os resultados tenham confirmado as tendências esperadas, acabei deixando esse exercício fora do artigo final por não ter realizado testes sobre sua robustez. Técnicas mais sofisticadas certamente ajudariam a otimizar o tempo de processamento, mas eu simplesmente ainda não as domino.
 
-Outra lição foi sobre **processamento paralelo e repetibilidade**. Para garantir que o código rode de forma consistente em diferentes máquinas, é importante levar em conta limitações de hardware. Descobri que existem alternativas, como `parallel::detectCores()`, que permitem verificar o número de núcleos disponíveis antes de definir o número de *workers*, evitando que o código tente usar mais recursos do que a máquina suporta. Para projetos futuros, isso parece uma boa prática para garantir que os scripts sejam replicáveis computacionalment em ambientes diversos.
+Finalmente, outra lição foi sobre o uso de processamento paralelo e replicabilidade. Para assegurar que o código rode consistentemente em diferentes máquinas, percebi que é essencial adaptar os scripts às limitações computacionais específicas de cada ambiente. Uma solução prática que identifiquei é utilizar funções como `parallel::detectCores()`, que permitem verificar o número de núcleos disponíveis antes de definir o número de *workers*, evitando que o código tente usar mais recursos do que a máquina suporta. Técnicas como **compartimentalização** (*Docker*) - encorajada inclusive na economia [@AEADocker2021] - também podem ajudar significativamente esse tipo de processo. Isso certamente será uma boa prática para garantir a replicabilidade computacional de meus futuros projetos.
 
 # Repetibilidade {#sec-appendix}
 
