@@ -388,7 +388,7 @@ wid_full <- furrr::future_map_dfr(wid_files, process_wid_file)
 ::: {.cell}
 
 ```{.r .cell-code}
-# Exemplo 2: uso de verbos do dplyr para limpeza
+# Uso de funções do dplyr para limpeza
 wid_filtered <- wid_full %>%
   dplyr::filter(variable %in% c("sptincj992", "sdiincj992", "gptincj992", "gfiincj992")) %>%
   dplyr::filter(!is.na(value), lower_percentile %in% c("99", "0")) %>%
@@ -406,7 +406,7 @@ wid_filtered <- wid_full %>%
 ::: {.cell}
 
 ```{.r .cell-code}
-# Exemplo 3: sumarizar e agrupar — observações por país e ano
+# Sumarizar e agrupar observações por país e ano
 wid_summary <- wid_filtered %>%
   dplyr::group_by(country, year) %>%
   dplyr::summarise(
@@ -423,7 +423,65 @@ head(wid_summary)
 
 
 
-- **Visualização e Ferramentas Estatísticas:** Finalmente, utilizei técnicas estatísticas, como regressões lineares (`lm()`), e gerei visualizações com `ggplot2`. Para garantir clareza e qualidade gráfica, os gráficos foram exportados com o pacote `tikz`, permitindo uma representação vetorial precisa, alinhada aos princípios de comunicação visual eficaz discutidos durante o curso. Uma ilustração disso é a [Figura 7](#correlacao_eci_sdiincj992), que mostra como a associação entre ECI e desigualidade torna-se regressiva entre os 10% mais rico (isto é, seus efeitos diminuem à medida que nos aproximamos das faixas mais elevadas da distribuição).
+- **Visualização e Ferramentas Estatísticas:** Finalmente, utilizei técnicas estatísticas, como regressões lineares (`lm()`), e gerei visualizações com `ggplot2`. Para garantir clareza e qualidade gráfica, os gráficos foram exportados com o pacote `tikz`, permitindo uma representação vetorial precisa, alinhada aos princípios de comunicação visual eficaz discutidos durante o curso.
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+# Gera e exporta gráfico de correlação ECI-share de renda usando ggplot2 + tikz
+
+# Dados filtrados para um ano/década
+dados_plot <- data %>%
+  filter(decade == 2000, 
+         wid_variable == "top_income_share") %>%  # ajustar conforme nome da variável
+  drop_na(avg_eci, wid_value) %>%
+  mutate(percentil = factor(lower_percentile,  # converter para fator com labels
+                            levels = c(90, 99, 99.9, 99.99, 99.999),
+                            labels = c("90", "99", "99.9", "99.99", "99.999"))
+
+# Cores
+cores_percentis <- c(
+  "90" = "#8B0000", # vermlho
+  "99" = "#D2B48C", # marrom
+  "99.9" = "#228B22", # verde
+  "99.99" = "#00008B", # azul
+  "99.999" = "#800080" # roxo
+)
+
+plot_final <- ggplot(dados_plot, aes(x = avg_eci, y = wid_value)) +
+  geom_point(aes(color = percentil), alpha = 0.7, size = 2.5) +
+  geom_smooth(aes(color = percentil), method = "lm", formula = y ~ x, 
+              se = FALSE, linewidth = 0.8) +
+  scale_color_manual(values = cores_percentis) +
+  labs(
+    x = "Economic Complexity Index (ECI)",
+    y = "Share de Renda no Topo",
+    color = "Percentil:",
+    caption = "Fonte: WID e SITC 2"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = c(0.85, 0.85),  # posição da legenda
+    legend.background = element_rect(fill = "white", color = "gray80"),
+    panel.grid.minor = element_blank(),
+    axis.title = element_text(face = "bold")
+  )
+
+# Exportar com tikz
+tikz(file = "figura7_correlacao.tex", 
+     width = 7, 
+     height = 5,
+     sanitize = TRUE)
+print(plot_final)
+dev.off()
+```
+:::
+
+
+
+- Uma ilustração disso é a [Figura 7](#correlacao_eci_sdiincj992), que mostra como a associação entre ECI e desigualidade torna-se regressiva entre os 10% mais rico (isto é, seus efeitos diminuem à medida que nos aproximamos das faixas mais elevadas da distribuição).
 
 ::: {style="height: 10px;"}
 :::
