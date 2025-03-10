@@ -138,9 +138,10 @@ O principal objetivo desta etapa construir uma base que reunisse os dados sobre 
 
 **World Inequality Database (WID):** A WID consiste em centenas de `.csv`, sendo pelo menos dois por país — um com os metadados e outros com os dados propriamente. Também há arquivos que agregam informações de regiões inteiras, como a América Latina e o Caribe ou a União Europeia. Em alguns casos, como China e Estados Unidos, há arquivos específicos com dados de subdivisões intranacionais. Encontramos estatísticas sobre desigualdade de renda, riqueza, população e agregados macroeconômicos para mais de 200 países e regiões, cobrindo diferentes períodos. A base completa pode ser baixada clicando neste [link](https://wid.world/data/). 
 
-A WID é construída segundo a metodologia da DINA e, por meio de imputações, sempre fornece dados para todos os percentis da distribuição [@blanchet2024distributional]. Além disso, inclui variáveis associadas a diferentes conceitos de renda, como, por exemplo, *pretax income*, *post-tax income* e *factor income*. A *Tabela 2* abaixo apresenta a estrutura dos códigos da WID (o dicionário de códigos pode ser acessado [aqui](https://wid.world/codes-dictionary/)). Para uma comparação entre a WID e outras bases de desigualdade, incluindo as utilizadas por @Hartmann2017, consulte a *Tabela 3* clicando <a href="table_db_md.png" target="_blank">aqui</a>.
+A WID é construída segundo a metodologia da DINA e, por meio de imputações, sempre fornece dados para todos os percentis da distribuição [@blanchet2024distributional]. Além disso, inclui variáveis associadas a diferentes conceitos de renda, como, por exemplo, *pré-tributação*, *pós-tributação* e *renda dos fatores*. A [*Tabela 2*](#table2) abaixo apresenta a estrutura dos códigos da WID (o dicionário de códigos pode ser acessado [aqui](https://wid.world/codes-dictionary/)). Para uma comparação entre a WID e outras bases de desigualdade, incluindo as utilizadas por @Hartmann2017, consulte a *Tabela 3* clicando <a href="table_db_md.png" target="_blank">aqui</a>.
 
-::: small-table
+
+::: {#table2 .small-table}
 | **categoria**      | **código** | **significado**         |
 |--------------------|------------|-------------------------|
 | tipo               | `s`        | fração de renda         |
@@ -153,16 +154,16 @@ A WID é construída segundo a metodologia da DINA e, por meio de imputações, 
 | idade              | `992`      | acima de 20 anos        |
 | percentil de renda | `p99p100`  | 1% no topo              |
 
-: ***Tabela 3:*** *Estrutura dos Códigos da WID.*<br>***Fonte:*** *@WIDCodesDictionary.*
+: ***Tabela 2:*** *Estrutura dos Códigos da WID.*<br>***Fonte:*** *@WIDCodesDictionary.*
 :::
 
  
 
 **SITC, Rev. 2 do Atlas of Economic Complexity (SITC 2):** O Atlas oferece bases sobre comércio internacional, crescimento econômico, e produtos e serviços classificados segundo a noção de complexidade econômica desenvolvida por Hidalgo e Hausmann [@atlasEconomicComplexity]. Uma apresentação curta sobre ele se encontra [aqui](https://atlas.hks.harvard.edu/about-data#data). Ele contém dados históricos de comércio bilateral para aproximadamente 700 produtos agrupados em 10 setores, cobrindo mais de 250 países e territórios desde 1962. As fontes do Atlas são dados da *United Nations Statistical Division (Comtrade)* e da *IMF Direction of Trade Statistics*. 
 
-Os dados são estruturados segundo dois sistemas de classificação: *Harmonized System (HS 1992)* e a *Standard International Trade Classification (SITC, Rev. 2 ou SITC 2)*. Na SITC 2 [@SITC-2], os produtos são classificados em níveis de 1-, 2- ou 4-dígitos, mantendo consistência metodológica desde os anos 1960 – mesmo com o surgimento de novos produtos como, e.g., eletrônicos. Já a a base HS 1992 é mais granular. Ela inclui por volta de 5000 produtos (detalhados em 1-, 2-, 4- ou 6-dígitos), mas cobre um período mais curto, a partir de 1995. A *Tabela 4* abaixo apresenta a estrutura dos códigos da SITC 2. Em sua análise original, Hartmann et al. optaram pela SITC 2, pois ela permite estudos de mais longo prazo. Pela mesma razão, é ela a que empreguei aqui.
+Os dados são estruturados segundo dois sistemas de classificação: *Harmonized System (HS 1992)* e a *Standard International Trade Classification (SITC, Rev. 2 ou SITC 2)*. Na SITC 2 [@SITC-2], os produtos são classificados em níveis de 1-, 2- ou 4-dígitos, mantendo consistência metodológica desde os anos 1960 – mesmo com o surgimento de novos produtos como, e.g., eletrônicos. Já a a base HS 1992 é mais granular. Ela inclui por volta de 5000 produtos (detalhados em 1-, 2-, 4- ou 6-dígitos), mas cobre um período mais curto, a partir de 1995. A [*Tabela 4*](#table4) abaixo apresenta a estrutura dos códigos da SITC 2. Em sua análise original, Hartmann et al. optaram pela SITC 2, pois ela permite estudos de mais longo prazo. Pela mesma razão, é ela a que empreguei aqui.
 
-::: small-table
+::: {#table4 .small-table}
 | **categoria** | **código** | **significado** |
 |-----------------|-----------------|--------------------------------------|
 | país | `country_id` | código do país (M49 - ONU) |
@@ -183,7 +184,7 @@ Os dados são estruturados segundo dois sistemas de classificação: *Harmonized
 
 ## Limpeza e Estruturação dos Dados
 
-O processo de limpeza e integração dos dados da WID e da SITC 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R){download="wid-SITC-cleaning.R"}). Resumidamente, segui os seguintes passos:
+O processo de limpeza e integração dos dados da WID e da SITC 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R){download="wid-SITC-cleaning.R"}). Resumidamente, nesta etapa segui estes seguintes passos:
 
 (i) carregamento e combinação da WID; carregamento e agregação do STIC 2;
 (ii) integração com informações sobre população; 
@@ -193,12 +194,15 @@ O processo de limpeza e integração dos dados da WID e da SITC 2 está document
 
 Vejamos cada um deles com um pouco de detalhe.
 
+::: {style="height: 15px;"}
+:::
+
 **i. Carregamento e Combinação da WID**
 
--   Todos os arquivos da WID foram lidos e concatenados em um único *data frame* (`wid_full`). Para otimizar esta etapa, utilizei processamento paralelo (`future_map_dfr()`), que distribui a carga de trabalho entre múltiplos núcleos do computador.
--   A seguir, selecionei apenas as variáveis de interesse do **Projeto** (veja a *Tabela 5* abaixo): Gini, razão de Palma (razão da renda apropriada pelos 10% mais ricos e os 40% mais pobres), e renda apropriada por diferentes frações (50% mais pobres, 40% intermediários, e 10%, 1%, 0,1%, 0,01%, 0,001% mais ricos).
+-   Todos os arquivos da WID foram lidos e concatenados em um único *data frame* (`wid_full`)cujo tamanho ultrapassaria 16 GB. Para otimizar essa etapa, utilizei processamento paralelo com a função `future_map_dfr()`, que aplica a função de leitura em múltiplos arquivos simultaneamente, distribuindo a carga entre núcleos disponíveis e combina os resultados em um único data frame.
+-   A seguir, selecionei apenas as variáveis de interesse do ***Projeto:*** Gini, razão de Palma -- razão da renda apropriada pelos 10% mais ricos e os 40% mais pobres --, e renda apropriada por diferentes frações da distribuição -- 50% mais pobres, 40% intermediários, e 10%, 1%, 0,1%, 0,01%, 0,001% mais ricos (veja a [*Tabela 5*](#table5) abaixo).
 
-::: small-table
+::: {#table5 .small-table}
 | **código** | **tipo** | **renda** | **percentis** |
 |---------------|---------------|---------------|-----------------------------|
 | `sptincj992` | fração | pré-tributação | `p050`, `p50p90`, `p90p100`, `p99p100`, `p99.9p100`, `99.99p100`, `99.999p100` |
@@ -208,19 +212,19 @@ Vejamos cada um deles com um pouco de detalhe.
 | `rptincj992` | Palma | pré-tributação | `p0p40`, `p90p100` |
 | `rdiincj992` | Palma | pré-tributação | `p0p40`, `p90p100` |
 
-: *Tabela 5: Variáveis da WID selecionadas*</span>
+: ***Tabela 5:*** *Variáveis da WID selecionadas para o* ***Projeto***</span>
 :::
 
  
 
 
--   Veja na [Figura 4](#plot_topshare) série de concentração no topo de Brasil, França e Estados Unidos. Os resultados estão em linha com o que está disponível na plataforma interativa do WID como pode ser acessado [aqui](https://wid.world/share/#0/countriestimeseries/sptinc_p99p100_z/US;FR;BR/last/eu/k/p/yearly/s/false/5.6290000000000004/40/angle/false).
+-   Veja na [Figura 4](#plot_topshare) série de concentração no topo de Brasil, França e Estados Unidos e que ilustra o tipo de informação oferecida pelo WID.
 
 ::: {style="height: 10px;"}
 :::
 
 ::: {#plot_topshare .small-figure}
-<p class="figure-caption-top">*Figura 4: participação dos 1% mais ricos na renda total (Brasil, França, EUA, 1820-presente).<br>Fonte: gerado no `wid-SITC-cleaning.R`.*</p>
+<p class="figure-caption-top">***Figura 4:*** *participação dos 1% mais ricos na renda total (Brasil, França, EUA, 1820-presente). Os<br> resultados estão em linha com que está disponível na plataforma interativa do WID como<br>pode ser acessado [aqui](https://wid.world/share/#0/countriestimeseries/sptinc_p99p100_z/US;FR;BR/last/eu/k/p/yearly/s/false/5.6290000000000004/40/angle/false).* ***Fonte:*** *gerado no `wid-SITC-cleaning.R` com dados da WID.*</p>
 
 <img 
   src="plot_topshare.png" 
@@ -232,15 +236,15 @@ Vejamos cada um deles com um pouco de detalhe.
   ">
 :::
 
--   Duas coisas devem ser notadas. Além das variáveis distributivas, precisamos definir o conceito de renda. Dentre os diversos disponíveis na WID, optei pela renda pré-tributação (`ptinc`) e pela renda pós-tribução (`diinc`). Isso permitiria avaliar a interação da redistribuição de renda com a complexidade e desigualdade.
+-   É importante ter em mente duas coisa. Além das variáveis distributivas, precisamos definir qual conceito de renda vamos utilizar. Dentre os diversos disponíveis na WID, optei pela renda pré-tributação (`ptinc`) e pela renda pós-tribução (`diinc`). Isso permitiria avaliar a interação da redistribuição de renda com a complexidade e desigualdade.
 
--   Segundo, é necessário estabelecer a unidade e a faixa etária das variáveis de desigualdade (veja a **Tabela 3**). Minha escolha foi orientada pela disponibilidade de dados. Como podemos ver na **Figura 1**, a unidade "equal-split", que divide a renda familiar igualmente entre adultos no domicílio (`j`) é significativamente mais abrangente do que a unidade individual, assim como a faixa etária que considera indivíduos com 20 anos ou mais (`992`). A explicação para essas escolhas é a distribuição dos dados da WID. Conforme é possível ver na [*Figura 5*](#plot_obs_decade).
+-   Segundo, é necessário estabelecer a unidade e a faixa etária das variáveis de desigualdade (veja a *Tabela 3*). Minha escolha foi orientada pela disponibilidade de dados. Como podemos ver na [*Figura 5*](#plot_obs_decade), a unidade "equal-split" (`j`), que divide a renda familiar igualmente entre adultos no domicílio, possui bem mais observações do que a unidade indivíduos (`i`). Além disso, veja a escassez de observações para todas as variáveis — Gini, Razão de Palma e frações ("shares") de renda — nas décadas de 1960 e 1970. Também observe como a quantidade de observações para frações de renda é bem superior do que para as outras duas variáveis.
 
 ::: {style="height: 10px;"}
 :::
 
 ::: {#plot_obs_decade .small-figure}
-<p class="figure-caption-top">*Figura 5: distribuição de observações por década e variável.<br>Fonte: gerado no `wid-SITC-cleaning.R`.*</p>
+<p class="figure-caption-top">***Figura 5:*** *distribuição de observações por década e variável.* ***Fonte:*** *gerado<br>no `wid-SITC-cleaning.R` com dados da WID.*</p>
 
 <img 
   src="plot_obs_decades.png" 
@@ -255,29 +259,25 @@ Vejamos cada um deles com um pouco de detalhe.
 ::: {style="height: 10px;"}
 :::
 
--   Por fim, também selecionei as variáveis de **GDP** e *população*, também disponibilizadas na WID, necessárias para o cálculo do PIB per capita, utilizado como controle na fase de análise.
+-   Também selecionei as variáveis de *GDP* e *população*, também disponibilizadas na WID. Elas se faziam necessárias para o cálculo do PIB per capita, utilizado como controle na fase de análise.
 
--   Várias colunas referentes a percentis (ex.: `p99p100`, `p90p100`) foram reorganizadas para serem interpretadas corretamente (mantendo-as como *string* para evitar erros de arredondamento).
+-   Para evitar distorções causadas por arredondamento e garantir a correta intepretação das colunas com informações dos percentis (e.g., `p99p100`, `p90p100`), reorganizei e armazenei essas colunas como *strings*.
 
--   Concluída a filtragem, gerei *data frames* intermediários e salvei-os em formato `.csv` e `.rds` para que cada estágio do pipeline fosse repetível.
+-   Finalmente, para permitir a recuperação do pipeline em diferentes estágios, gerei *data frames* intermediários e os salvei em formato `.csv` e `.rds`.
+
+::: {style="height: 15px;"}
+:::
 
 **ii. Carregamento e Agregação do SITC 2**
 
-Na SITC (Atlas) fiz uso das seguintes variáveis:
-
--   **ECI** (`avg_eci`): indicador de complexidade econômica médio do país.
--   **Exportações e Importações** (para filtrar países que tivessem volume significativo de comércio exterior)
--   **Demais índices** (PCI, COI), embora o foco principal seja o ECI.
--   Os dados do Atlas de Complexidade Econômica vinham em diversos arquivos `.dta` (Stata) com granularidade produto-ano-país.\
--   Para cada arquivo, extraí apenas as colunas de interesse: `country_id`, `year`, `export_value`, `import_value` e `eci`, entre outras. Em seguida, agreguei por país-ano, somando as exportações totais e calculando a média do ECI daquele país no ano.\
--   Devido ao volume de dados, também usei blocos de processamento e funções em paralelo para evitar estouro de memória e agilizar a execução.
--   Resultando disso, obtive um *data frame* com uma linha por (país, ano), contendo *eci* médio e exportações totais (entre outras medidas). Veja o plot gerado em [*Figura 6*](#10exporters).
+-   Na SITC 2 fiz uso das seguintes variáveis: **ECI** (`avg_eci`), indicador de complexidade econômica médio do país, e **exportações e importações**. Essas variáveis foram relevantes porque Hartmann et al. limitaram sua análise a mais de 150 países que atendiam a dois critérios: população superior a 1,5 milhão de habitantes e volume de exportações acima de 1 bilhão de dólares.
+-   Os dados estavam distribuídos em vários arquivos `.dta` (Stata), convertidos para `.csv` e `.rds`. Para cada arquivo, selecionei apenas as colunas relevantes: `country_id`, `year`, `export_value`, `import_value` e `eci`. Em seguida, agreguei os dados por país e ano, somando o total das exportações e calculando a média do ECI para cada país em cada ano. Isso me permitiu, e.g., gerar a [*Figura 6*](#10exporters) que mostra a evolução das exportações nos 10 países com os maiores volumes comerciais ao longo do tempo.
 
 ::: {style="height: 10px;"}
 :::
 
 ::: {#10exporters .small-figure}
-<p class="figure-caption-top">*Figura 6: evolução da exportação total (top 10 países).<br>Fonte: gerado no `wid-SITC-cleaning.R`.*</p>
+<p class="figure-caption-top">***Figura 6:*** *evolução da exportação total (top 10 países).* ***Fonte:*** *gerado<br>no `wid-SITC-cleaning.R` com dados do SITC 2.*</p>
 
 <img 
   src="10exporters.png" 
@@ -292,38 +292,48 @@ Na SITC (Atlas) fiz uso das seguintes variáveis:
 ::: {style="height: 10px;"}
 :::
 
-**iii. Integração com Informações de População (World Bank)**
-    -   Para filtrar países com volume demográfico adequado ou para calcular métricas *per capita*, incorporei dados de população do World Bank (arquivo `.csv` com série histórica).\
+-   Devido ao grande volume de dados, também fiz uso de processamento em blocos e funções paralelas para otimizar a execução e evitar o consumo excessivo de memória.
+-   O resultado foi um *data frame* estruturado com uma linha para cada combinação de país e ano, contendo o ECI médio e o total de exportações.
 
--   Converti o formato largo para longo (`pivot_longer()`), mantive apenas anos de interesse e apliquei `countrycode` para uniformizar códigos de país.
+::: {style="height: 15px;"}
+:::
 
-**iv.  Conversão de Códigos de País**
-    -   A padronização de códigos de país foi fundamental. A WID, em muitos casos, utiliza códigos ISO2 (BR, US, FR, etc.), enquanto o SITC 2 estava em ISO numérico (76, 840, 250, etc.).\
+**iii. Integração com Informações de População (Banco Mundial)**
 
--   Apliquei a função `countrycode()` em R para converter tudo para ISO3 (BRA, USA, FRA, etc.). Isso viabilizou a junção (`left_join` ou `inner_join`) pelo `country_id`.\
--   Também removi códigos associados a regiões agregadas ou subdivisões de países que não interessavam na análise (p.ex. `US-AL`, `DE-BY`, `ARB`, `EUU`, etc.).
+-   Embora o SITC 2 contenha dados sobre volume de exportações, ele não inclui informações sobre população, que são essenciais para atender ao segundo critério de Hartmann et al. Por isso, integrei ao *data frame* informações sobre população do Banco Mundial (disponível para baixar [aqui](<https://data.worldbank.org/indicator/SP.POP.TOTL>)).
+-   Para padronizar os dados, converti o formato largo para longo (`pivot_longer()`) e mantive apenas anos de interesse.
+
+::: {style="height: 15px;"}
+:::
+
+**iv.  Conversão de Códigos e Filtragem de Países**
+
+- A padronização dos códigos de país foi um passo essencial para permitir a integração dos diferentes conjuntos de dados. A WID utiliza códigos ISO2 (BR, US, FR, etc.), enquanto o SITC 2 emprega códigos numéricos ISO e M49 da ONU (76, 840, 250, etc.).
+- Para harmonizar essas diferenças, utilizei a função `countrycode()` convertendo todos os códigos para o padrão ISO3 (BRA, USA, FRA, etc.). Isso garantiu a compatibilidade necessária para realizar junções (`left_join` ou `inner_join`) pelo identificador `country_id`.
+- Além disso, excluí códigos correspondentes a regiões agregadas ou subdivisões de países que não eram relevantes para a análise, como `US-AL` (Alabama, EUA), `DE-BY` (Baviera, Alemanha), `ARB` (países árabes) e `EUU` (União Europeia).
+
+::: {style="height: 15px;"}
+:::
 
 **v. Merge Final (SITC 2 + WID)**
-    -   Feita a padronização, o *merge* final uniu as variáveis de desigualdade (WID) e as variáveis de complexidade/fluxos comerciais (SITC 2) por (país, ano).\
 
--   Nesse estágio, verifiquei a existência de *NAs* (valores ausentes) e outliers, decidindo por remoção ou imputação dependendo do caso.\
--   Alguns filtros adicionais foram aplicados para manter apenas países e anos relevantes (por exemplo, 1962–2008 para a parte de ECI, já que essa é a abrangência principal do SITC 2).
+-   Feita a padronização, o "merge" ou junção final uniu as variáveis de desigualdade (WID) e as variáveis de complexidade e fluxos comerciais (SITC 2), utilizando "country-year" como chave.
+-   Nessa etapa, identifiquei a presença de diversos valores ausentes (NAs) e outliers. Após uma análise de robustez, optei pela remoção desses casos para garantir a consistência dos dados.
 
-**vi. Checagem de Consistência e Salvando a Versão Final**
-    -   Conferi o número de observações e a distribuição temporal (quantos dados por década e por país).
+::: {style="height: 15px;"}
+:::
 
+**vi. Checagem de Consistência e Salvamento da Versão Final**
 
-## Conceitos e técnicas aplicadas
+-   Conferi a quantidade de observações no data frame final e avaliei a distribuição temporal dos dados, analisando a quantidade de registros por década e por país para identificar possíveis lacunas ou inconsistências.
+Calculei estatísticas descritivas (médias, desvios-padrão) para validar se os valores de ECI, Gini, participação do topo, entre outros, estavam alinhados com expectativas da literatura.
+-   Finalmente, armazenei o *dataset* resultante eno objeto `combined_sitc_wid` e salvei versões em `.csv` e `.rds`. Isso me possibilitaria realizar as análises e produzir os resultados, que seriam objeto das etapas posteriores (vide o script `analysis-proper.R`).
 
--   Na Figura X, é possível visualizar a distribuição final de observações por década e por variável, evidenciando a concentração dos dados principalmente a partir dos anos 1980.
+## Conceitos e técnicas de ciência dos dados aplicadas
 
--   Gerei estatísticas descritivas (médias, desvios-padrão) para verificar se os valores de ECI, Gini, participação do topo, etc. estavam dentro do esperado.\
--   Finalmente, salvei o *dataset* resultante em formatos `.csv` e `.rds`, aptos para a próxima etapa de análise exploratória e regressões.
+Nesta seção descrevo brevemente os conceitos e técnicas da disciplina *Ciência dos Dados Avançada* empregados durante a exploração e limpeza dos dados do ***Projeto***. Em poucas palavras, fiz uso intensivo de técnicas como programação funcional, paralelização e manipulação avançada de dados, estruturação e visualização de dados. Cada conceito e técnica é acompanhada de exemplos práticos de código R.
 
-A leitura e padronização dos arquivos `.csv` da WID foi feita por meio de **programação funcional** e **paralelização** em R, seguindo o que está ilustrado abaixo (Exemplo 1). A listagem de arquivos é obtida com `list.files()`, e cada arquivo passa pela função `process_wid_file()` que lê e transforma colunas específicas. Estes procedimentos empregam **conceitos de orientação a objetos** e **manipulação de estruturas de dados** (principalmente data frames em R), bem como funções do pacote `dplyr` (como `mutate`, `group_by` etc.). Também ilustram as seguintes práticas:
-
--   **Programação Funcional e Criação de Funções:** Uso de funções personalizadas (e.g., `process_wid_file()`) para encapsular lógica de leitura e limpeza de cada arquivo, facilitando a manutenção e a reusabilidade de código.
--   Relaciona-se ao **Fundamento de Programação em R** visto no curso, incluindo a criação de funções e boas práticas de programação.
+- **Programação Funcional e Criação de Funções:** Encapsulei operações de leitura e transformação em funções específicas para aumentar a reusabilidade e facilitar a manutenção. Utilizei programação funcional com a função personalizada `process_wid_file()`que lê cada arquivo listado por meio de `list.files()` e seleciona e transforma as colunas necessárias. Nesse processo, apliquei conceitos vistos em aula, como orientação a objetos, manipulação avançada de estruturas de dados (especialmente *data frames*), e utilizei funções do pacote `dplyr`, tais como `mutate`, `group_by`.
 
 ```{r echo=TRUE, eval=FALSE}
 # Uso de programação funcional para ler múltiplos arquivos (funções, loops, paralelismo)
@@ -345,7 +355,6 @@ process_wid_file <- function(file_path) {
 ```
 
 -   **Paralelização:** Emprego de `future_map_dfr()` (pacote `**furrr**`) para processamento paralelo, tornando a execução mais eficiente.
--   Alinha-se ao tópico **Fundamentos de Programação Avançada**, onde se discutem loops, paralelismo e otimização.
 
 ```{r echo=TRUE, eval=FALSE}
 # Paralelizando a leitura de arquivos com 'future_map_dfr()'
@@ -355,8 +364,7 @@ wid_files <- list.files(path = "data/wid_all_data", pattern = "\\.csv$", full.na
 wid_full <- furrr::future_map_dfr(wid_files, process_wid_file)
 ```
 
--   **Manipulações Avançadas com `dplyr`:** Operações como `select`, `filter`, `mutate`, `group_by` e `summarise` para limpeza e transformação de dados.
--   Conecta-se a **Principais Bibliotecas de Ciência de Dados**, demonstrando como organizar e agregar dados de forma idiomática no R.
+- **Manipulações Avançadas com `dplyr`:** Usei intensivamente verbos como `select`, `filter`, `mutate`, `group_by` e `summarise`, mostrando na prática a aplicação de técnicas vistas no tópico de ***Principais Bibliotecas de Ciência de Dados***.
 
 ```{r echo=TRUE, eval=FALSE}
 # Exemplo 2: uso de verbos do dplyr para limpeza
@@ -367,8 +375,7 @@ wid_filtered <- wid_full %>%
                 period_flag = ifelse(year >= 1980, TRUE, FALSE))
 ```
 
--   **Estrutura e Limpeza de Dados:** Conversão de colunas (p. ex., strings → numérico), criação de variáveis derivadas (e.g., `decade`, `period_flag`), filtragem de *NAs*, seleção de variáveis relevantes e remoção de outliers.
--   Está em sintonia com os **Conceitos de Limpeza e Organização de Dados** do curso, ilustrando boas práticas de pré-processamento.
+- **Estruturação e Limpeza dos Dados:** Transformei e organizei os dados, convertendo variáveis textuais para numéricas, criando novas variáveis úteis (como `decade` e `period_flag`) e removendo dados faltantes (*NAs*) e valores extremos (*outliers*), alinhando-me com os ***Conceitos de Limpeza e Organização de Dados*** estudados.
 
 ```{r echo=TRUE, eval=FALSE}
 # Exemplo 3: sumarizar e agrupar — observações por país e ano
@@ -385,13 +392,13 @@ wid_summary <- wid_filtered %>%
 head(wid_summary)
 ```
 
--   **Visualização e Ferramentas Estatísticas:** Análises com `lm()` e outras técnicas estatísticas, acompanhadas de gráficos gerados via `ggplot2`. Além disso, utilizei o pacote \`tikz\` que permite exportar gráficos diretamente para LaTeX em formato vetorial. Isso assegura precisão na representação dos dados, clareza visual pela ausência de elementos desnecessários e maior efetividade na comunicação independente do texto, conforme os princípios discutidos de visualização de dados aprendidos no curso Veja a [Figura 7](#correlacao_eci_sdiincj992).
+- **Visualização e Ferramentas Estatísticas:** Finalmente, utilizei técnicas estatísticas, como regressões lineares (`lm()`), e gerei visualizações com `ggplot2`. Para garantir clareza e qualidade gráfica, os gráficos foram exportados com o pacote `tikz`, permitindo uma representação vetorial precisa, alinhada aos princípios de comunicação visual eficaz discutidos durante o curso. Uma ilustração disso é a [Figura 7](#correlacao_eci_sdiincj992), que mostra como a associação entre ECI e desigualidade torna-se regressiva entre os 10% mais rico (isto é, seus efeitos diminuem à medida que nos aproximamos das faixas mais elevadas da distribuição).
 
 ::: {style="height: 10px;"}
 :::
 
 ::: {#correlacao_eci_sdiincj992 .small-figure}
-<p class="figure-caption-top">*Figura 7: correlação simples do ECI e diferentes parcelas da renda apropriadas pelas faixas<br>do topo. Gerado com `tikz`. Fonte: gerado no `wid-SITC-cleaning.R`.*</p>
+<p class="figure-caption-top">***Figura 7:*** *correlação simples do ECI e diferentes parcelas da renda apropriadas pelas faixas do topo, visualizada<br>com pacote `tikz`.* ***Fonte:*** *gerado no `wid-SITC-cleaning.R` com dados do WID e do SITC 2.*</p>
 
 <img 
   src="plot_lates_correlacao_eci_sdiincj992.png" 
@@ -406,18 +413,9 @@ head(wid_summary)
 ::: {style="height: 10px;"}
 :::
 
--   Relaciona-se à parte de **Visualização e Análise Avançada** e às **Ferramentas Estatísticas** (e.g., regressão linear), usando a sintaxe do `tidyverse` para apresentações claras e replicáveis computacionalmente.
-
-Isso ilustra como as técnicas vistas no curso de *Ciência dos Dados* (funções, paralelismo, operadores do `tidyverse`, etc.) foram aplicadas para limpeza e estruturação dos dados.
-
-::: {style="height: 1px;"}
-:::
-
 # "Cozinha de Pesquisa": limitações e aprendizado {#sec-cozinha}
 
-Ao longo do *Projeto*, o principal desafio foi limpar e integrar as bases da WID e do Atlas.
-
-A estratégia (um tanto óbvia, é verdade) de dividir o processo em três etapas — conhecer a base, limpá-la e estruturá-la, e só depois partir para as análises — funcionou razoavelmente bem. Mas, como era de se esperar, houve muito **vai e volta**. Um exemplo: só depois de já estar rodando as análises percebi que, na minha base estruturada, havia deixado de fora variáveis importantes. Resultado? Tive que voltar para a fase de limpeza e refazer parte do pipeline.
+A estratégia (um tanto óbvia, é verdade) de dividir o processo em três etapas — conhecer a base, limpá-la e estruturá-la, e só depois partir para as análises — funcionou razoavelmente bem. Mas, como era de se esperar, houve muito **vai e volta**. Um exemplo: só depois de já estar rodando as análises percebi que, na minha base estruturada, havia deixado de fora variáveis importantes. Resultado? Tive que voltar para a fase de limpeza e refazer parte do pipeline. Na verdade, ao longo do ***Projeto***, o principal desafio foi de longe limpar e integrar as bases da WID e do Atlas.
 
 A documentação do Atlas e do WID -- especialmente seu dicionário de variáveis [@wid_codes_dictionary] -- é relativamente clara. Porém, os nomes das variáveis da WID, em particular, podem não parecer intuitivos à primeira vista. Com o tempo, me acostumei à estrutura dos códigos, mas há espaço para melhorias para torná-los mais acessíveis desde o início.
 
@@ -427,15 +425,17 @@ Outro ponto curioso — e até irônico — é que a **cobertura da WID é basta
 
 [^1]: A WID contém um total de 57.208.488 observações distribuídas entre 1.793 variáveis, cobrindo o período de 1807 a 2023. A média dos anos com observações na base é 1999, com um desvio padrão de 20 anos. O primeiro quartil (Q25) corresponde ao ano de 1990, a mediana situa-se em 2002 e o terceiro quartil (Q75) em 2012. O número de anos com dados disponíveis por país também varia consideravelmente: o mínimo é 43 anos, enquanto o máximo chega a 214. Em média, cada país possui informações cobrindo 87 anos, com os seguintes quartis: Q25 = 44 anos, Q50 = 74 anos e Q75 = 95 anos.
 
-Finalmente, não fiz uso de tudo que a WID oferece. As análises foram feitas com faixas de distribuição mais amplas do que as que a WID oferece (50%, 40% e percentis do 10% mais rico). Mas, como a WID disponibiliza os dados em percentis individuais, eu poderia ter gerado recortes mais detalhados. Tentei fazer isso, mas depois de horas rodando (mesmo com paralelização), o processo ainda não tinha terminado. Como saída possível, testei uma abordagem baseada em decis, que confirmou as tendências esperadas, mas acabou ficando de fora do relatório. A demora no processamento certamente poderia ser otimizada com técnicas mais sofisticadas, que, honestamente, eu ainda não domino.
+Também devo dizer que não fiz uso de tudo que a WID oferece. As análises foram feitas com faixas de distribuição mais amplas do que as que a WID oferece (50%, 40% e percentis do 10% mais rico). Mas, como a WID disponibiliza os dados em percentis individuais, eu poderia ter gerado recortes mais detalhados. Tentei fazer isso, mas depois de horas rodando (mesmo com paralelização), o processo ainda não tinha terminado. Como saída possível, testei uma abordagem baseada em decis, que confirmou as tendências esperadas, mas acabou ficando de fora do relatório. A demora no processamento certamente poderia ser otimizada com técnicas mais sofisticadas, que, honestamente, eu ainda não domino.
 
 Outra lição foi sobre **processamento paralelo e repetibilidade**. Para garantir que o código rode de forma consistente em diferentes máquinas, é importante levar em conta limitações de hardware. Descobri que existem alternativas, como `parallel::detectCores()`, que permitem verificar o número de núcleos disponíveis antes de definir o número de *workers*, evitando que o código tente usar mais recursos do que a máquina suporta. Para projetos futuros, isso parece uma boa prática para garantir que os scripts sejam replicáveis computacionalment em ambientes diversos.
 
 # Repetibilidade {#sec-appendix}
 
-Segundo o relatório da *National Academies of Science* [-@rrc2019], é útil distinguir ***repetibilidade*** de ***replicabilidade***. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de **reprodutibilidade ou replicabilidade computacional**. Já a segunda, também chamada de **reprodutibilidade**, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente.
+Durante a realização do ***Projeto*** me preocupei em garantir que suas etapa pudessem ser repetidas por outros pesquisadores -- incluindo eu mesmo no futuro. Aliás, uma nota de vocabulário me parece em ordem. 
 
-Para garantir a **repetibilidade** da exploração, limpeza e estruturação dos dados, acesse o **Apêndice** clicando [aqui](repetibilidade.html). Nele você poderá baixar o script `wid-SITC-cleaning.R` além de encontrar informações sobre o ambiente computacional e os pacotes utilizados.
+Segundo relatório da *National Academies of Science* [-@rrc2019], é útil distinguir ***repetibilidade*** de ***replicabilidade***. A primeira envolve a obtenção de resultados consistentes utilizando exatamente o mesmo ambiente computacional. Por isso também podemos chamá-la de **reprodutibilidade ou replicabilidade computacional**. Já a segunda, também chamada de **reprodutibilidade** *simpliciter*, implica obter resultados consistentes em novos estudos que buscam responder à mesma questão científica, mas com dados coletados de forma independente.
+
+Nesses termos, para garantir a **repetibilidade** da exploração, limpeza e estruturação dos dados, acesse o **Apêndice** clicando [aqui](repetibilidade.html). Nele você poderá baixar o script `wid-SITC-cleaning.R` além de encontrar informações sobre o ambiente computacional e os pacotes necessários para executá-lo.
 
 ::: {style="height: 1px;"}
 :::
