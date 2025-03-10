@@ -137,11 +137,11 @@ Tudo foi conduzido em R versão **4.4.1, 2024-06-14** [@Rlanguage]. Como mencion
 
 ## Exploração dos Dados
 
-Aqui o principal objetivo foi construir uma base que reunisse os dados sobre complexidade do SITC 2 e aqueles de desigualdade da WID. Isso permitiria realizar as análises relevantes. Para isso explorei ambas as bases para entender suas características, variáveis e estruturas. Falemos sobre cada uma:
+O principal objetivo desta etapa construir uma base que reunisse os dados sobre complexidade do SITC 2 e aqueles de desigualdade da WID. Isso permitiria realizar as análises relevantes. Para isso, comecei explorando ambas as bases para entender suas características, variáveis e estruturas. Falemos sobre cada uma:
 
-**World Inequality Database (WID)**: A base completa pode ser baixada clicando neste [link](https://wid.world/data/). A WID consiste em centenas de `.csv`, sendo pelo menos dois por país — um com os dados e outro com os metadados. Além disso, há arquivos que agregam informações de regiões inteiras, como a América Latina e o Caribe. Em alguns casos, como China e Estados Unidos, há também arquivos específicos para subdivisões intranacionais. Há estatísticas sobre desigualdade de renda, riqueza, população e agregados macroeconômicos para mais de 200 países e regiões, cobrindo diferentes períodos.
+**World Inequality Database (WID):** A WID consiste em centenas de `.csv`, sendo pelo menos dois por país — um com os metadados e outros com os dados propriamente. Também há arquivos que agregam informações de regiões inteiras, como a América Latina e o Caribe ou a União Europeia. Em alguns casos, como China e Estados Unidos, há arquivos específicos com dados de subdivisões intranacionais. Encontramos estatísticas sobre desigualdade de renda, riqueza, população e agregados macroeconômicos para mais de 200 países e regiões, cobrindo diferentes períodos. A base completa pode ser baixada clicando neste [link](https://wid.world/data/). 
 
-A base é construída segundo a metodologia da DINA e fornece dados para todos os percentis da distribuição [@blanchet2024distributional]. Além disso, inclui variáveis associadas a diferentes conceitos de renda (por exemplo, *pretax income*, *post-tax income*, *factor income*). A *Tabela 2* abaixo apresenta a estrutura dos códigos da WID. O dicionário de códigos pode ser acessado [aqui](https://wid.world/codes-dictionary/). Para uma comparação entre a WID e outras bases de desigualdade, como as utilizadas por @Hartmann2017, acesse a *Tabela 3* clicando <a href="table_db_md.png" target="_blank">aqui</a>.
+A WID é construída segundo a metodologia da DINA e, por meio de imputações, sempre fornece dados para todos os percentis da distribuição [@blanchet2024distributional]. Além disso, inclui variáveis associadas a diferentes conceitos de renda, como, por exemplo, *pretax income*, *post-tax income* e *factor income*. A *Tabela 2* abaixo apresenta a estrutura dos códigos da WID (o dicionário de códigos pode ser acessado [aqui](https://wid.world/codes-dictionary/)). Para uma comparação entre a WID e outras bases de desigualdade, incluindo as utilizadas por @Hartmann2017, consulte a *Tabela 3* clicando <a href="table_db_md.png" target="_blank">aqui</a>.
 
 ::: small-table
 | **categoria**      | **código** | **significado**         |
@@ -156,14 +156,14 @@ A base é construída segundo a metodologia da DINA e fornece dados para todos o
 | idade              | `992`      | acima de 20 anos        |
 | percentil de renda | `p99p100`  | 1% no topo              |
 
-: *Tabela 3: Estrutura dos Códigos da WID*
+: ***Tabela 3:*** *Estrutura dos Códigos da WID.*<br>***Fonte:*** *@WIDCodesDictionary.*
 :::
 
  
 
-**SITC, Rev. 2 do Atlas of Economic Complexity**: O Atlas oferece bases sobre comércio internacional, crescimento econômico, e produtos e serviços classificados segundo a noção de complexidade econômica [@atlasEconomicComplexity]. Uma apresentação curta sobre ele se encontra [aqui](https://atlas.hks.harvard.edu/about-data#data). Ele contém dados históricos de comércio bilateral para aproximadamente 700 produtos agrupados em 10 setores, cobrindo mais de 250 países e territórios desde 1962. A fonte do Atlas são dados da *United Nations Statistical Division (Comtrade)* e da *IMF Direction of Trade Statistics*. Os dados são estruturados em dois formatos:
+**SITC, Rev. 2 do Atlas of Economic Complexity (SITC 2):** O Atlas oferece bases sobre comércio internacional, crescimento econômico, e produtos e serviços classificados segundo a noção de complexidade econômica desenvolvida por Hidalgo e Hausmann [@atlasEconomicComplexity]. Uma apresentação curta sobre ele se encontra [aqui](https://atlas.hks.harvard.edu/about-data#data). Ele contém dados históricos de comércio bilateral para aproximadamente 700 produtos agrupados em 10 setores, cobrindo mais de 250 países e territórios desde 1962. As fontes do Atlas são dados da *United Nations Statistical Division (Comtrade)* e da *IMF Direction of Trade Statistics*. 
 
-O Atlas disponibiliza os dados estruturados segundo dois sistemas de classificação: *Harmonized System (HS, 1992)* e a *Standard International Trade Classification (SITC, Rev. 2)*. Na SITC 2 [@SITC-2], os produtos são classificados em níveis de 1-, 2- ou 4-dígitos, mantendo consistência metodológica desde os anos 1960 – mesmo com o surgimento de novos produtos (ex: eletrônicos). Já a a base HS, 1992 é usada para análises mais recentes. Ela inclui por volta de 5000 produtos (detalhados em 1-, 2-, 4- ou 6-dígitos), mas cobre um período mais curto, a partir de 1995. A *Tabela 4* abaixo apresenta a estrutura dos códigos da SITC 2. Em sua análise original, Hartmann et al. optaram pela SITC 2, pois ela permite estudos de longo prazo, ainda que com menor granularidade. Pela mesma razão, é ela que empreguei aqui.
+Os dados são estruturados segundo dois sistemas de classificação: *Harmonized System (HS 1992)* e a *Standard International Trade Classification (SITC, Rev. 2 ou SITC 2)*. Na SITC 2 [@SITC-2], os produtos são classificados em níveis de 1-, 2- ou 4-dígitos, mantendo consistência metodológica desde os anos 1960 – mesmo com o surgimento de novos produtos como, e.g., eletrônicos. Já a a base HS 1992 é mais granular. Ela inclui por volta de 5000 produtos (detalhados em 1-, 2-, 4- ou 6-dígitos), mas cobre um período mais curto, a partir de 1995. A *Tabela 4* abaixo apresenta a estrutura dos códigos da SITC 2. Em sua análise original, Hartmann et al. optaram pela SITC 2, pois ela permite estudos de mais longo prazo. Pela mesma razão, é ela a que empreguei aqui.
 
 ::: small-table
 | **categoria** | **código** | **significado** |
@@ -178,7 +178,7 @@ O Atlas disponibiliza os dados estruturados segundo dois sistemas de classifica�
 | complexidade | `coi` | Complexity Outlook Index (COI-SITC) |
 | complexidade | `pci` | Índice de Complexidade do Produto (PCI) |
 
-: *Tabela 4: Estrutura dos Códigos da SITC, Rev. 2. Fonte: @SITC-2.*
+: ***Tabela 4:*** *Estrutura dos Códigos da SITC, Rev. 2.*<br>***Fonte:*** *@SITC-2.*
 :::
 
 ::: {style="height: 1px;"}
@@ -186,9 +186,9 @@ O Atlas disponibiliza os dados estruturados segundo dois sistemas de classifica�
 
 ## Limpeza e Estruturação dos Dados
 
-O processo de limpeza e integração dos dados da WID e da SITC 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R)). Resumidamente, segui os seguintes passos:
+O processo de limpeza e integração dos dados da WID e da SITC 2 está documentado no script `wid-SITC-cleaning.R` (baixe [aqui](wid-SITC-cleaning.R){download="wid-SITC-cleaning.R"}). Resumidamente, segui os seguintes passos:
 
-(i) carregamento e combinação da WID; carregamento e agregação do STIC 2; 
+(i) carregamento e combinação da WID; carregamento e agregação do STIC 2;
 (ii) integração com informações sobre população; 
 (iii) conversão de códigos de país; 
 (iv) merge final (SITC 2 + WID); 
