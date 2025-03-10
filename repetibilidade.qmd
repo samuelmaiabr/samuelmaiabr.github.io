@@ -30,7 +30,7 @@ Aqui, o objetivo principal é permitir que seja possível:
 2. Inventário completo de pacotes instalados
 3. Mapa de dependências entre pacotes
 4. Estado de conservação do ambiente virtual
-5. Metadados críticos para replicação
+5. Metadados críticos para repetibilidade ou replicação computacional
 
 # Informações do Ambiente {.unnumbered}
 
